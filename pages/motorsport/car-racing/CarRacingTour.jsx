@@ -93,7 +93,7 @@ function CarRacingTour(props) {
                         <span
                           onClick={() =>
                             router.push(
-                              `car-tour/${removeAccents(
+                              `/motorsport/car-tour/${removeAccents(
                                 item.title + "-" + item.country
                               )}`
                             )
@@ -111,7 +111,9 @@ function CarRacingTour(props) {
                         <button
                           onClick={() =>
                             router.push(
-                              `car-tour/${removeAccents(item.country)}`
+                              `/motorsport/car-tour/${removeAccents(
+                                item.title + "-" + item.country
+                              )}`
                             )
                           }
                         >

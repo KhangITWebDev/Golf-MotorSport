@@ -1,12 +1,12 @@
 import React from "react";
-import MainLayout from "../../../components/layout/mainLayout";
+import MotorSportLayout from "../../../../components/layout/motorsportLayout";
 import RacerDetailPage from "./RacerDetailPage";
 
 function Index(props) {
   return (
-    <MainLayout>
+    <MotorSportLayout>
       <RacerDetailPage />
-    </MainLayout>
+    </MotorSportLayout>
   );
 }
 

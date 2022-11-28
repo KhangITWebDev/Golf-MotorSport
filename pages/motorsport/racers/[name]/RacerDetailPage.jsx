@@ -6,9 +6,9 @@ import {
   NewsOn,
   NewsOnRoss,
   Video,
-} from "../../../utils/DataDemo/RacerDetailPage/data";
-import { Racers } from "../../../utils/DataDemo/Racers/data";
-import removeAccents, { convertDate } from "../../../utils/removeAccents";
+} from "../../../../utils/DataDemo/RacerDetailPage/data";
+import { Racers } from "../../../../utils/DataDemo/Racers/data";
+import removeAccents, { convertDate } from "../../../../utils/removeAccents";
 import styles from "./RacerDetails.module.scss";
 
 function RacerDetailPage(props) {

@@ -1,14 +1,14 @@
 import { useRouter } from "next/router";
 import React from "react";
 import styles from "./CarTourDetail.module.scss";
-import { Schedule } from "../../../utils/DataDemo/CarRacingPage/data";
+import { Schedule } from "../../../../utils/DataDemo/CarRacingPage/data";
 import removeAccents, {
   convertDate,
   getDateArray,
-} from "../../../utils/removeAccents";
+} from "../../../../utils/removeAccents";
 import Image from "next/image";
 import Link from "next/link";
-import { NewsOn, Video } from "../../../utils/DataDemo/CarTourDetails/data";
+import { NewsOn, Video } from "../../../../utils/DataDemo/CarTourDetails/data";
 
 function CarTourDetail(props) {
   const router = useRouter();

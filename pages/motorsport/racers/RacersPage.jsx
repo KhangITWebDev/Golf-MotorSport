@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { Racers } from "../../utils/DataDemo/Racers/data";
-import removeAccents from "../../utils/removeAccents";
+import { Racers } from "../../../utils/DataDemo/Racers/data";
+import removeAccents from "../../../utils/removeAccents";
 import styles from "./Racers.module.scss";
 
 function RacersPage(props) {
@@ -38,7 +38,7 @@ function RacersPage(props) {
                 layout="fill"
                 onClick={() =>
                   router.push(
-                    `/racers/${removeAccents(
+                    `/motorsport/racers/${removeAccents(
                       item.firstname + "-" + item.lastname
                     )}`
                   )
@@ -49,7 +49,7 @@ function RacersPage(props) {
                   className={styles.boxname}
                   onClick={() =>
                     router.push(
-                      `/racers/${removeAccents(
+                      `/motorsport/racers/${removeAccents(
                         item.firstname + "-" + item.lastname
                       )}`
                     )

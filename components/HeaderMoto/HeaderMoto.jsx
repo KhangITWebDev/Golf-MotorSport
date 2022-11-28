@@ -26,13 +26,13 @@ function HeaderMoto(props) {
               <ul className={styles.dropdown_menu}>
                 <li
                   className={styles.dropdown_item_1}
-                  onClick={() => router.push("/car-racing")}
+                  onClick={() => router.push("/")}
                 >
                   Car Racing
                 </li>
                 <li
                   className={styles.dropdown_item_2}
-                  onClick={() => router.push("/racers")}
+                  onClick={() => router.push("/motorsport/racers")}
                 >
                   Racers
                 </li>
@@ -50,13 +50,13 @@ function HeaderMoto(props) {
               <ul className={styles.dropdown_menu}>
                 <li
                   className={styles.dropdown_item_1}
-                  onClick={() => router.push("/car-racing")}
+                  onClick={() => router.push("/")}
                 >
                   Car Racing
                 </li>
                 <li
                   className={styles.dropdown_item_2}
-                  onClick={() => router.push("/racers")}
+                  onClick={() => router.push("/motorsport/racers")}
                 >
                   Racers
                 </li>
@@ -74,13 +74,13 @@ function HeaderMoto(props) {
               <ul className={styles.dropdown_menu}>
                 <li
                   className={styles.dropdown_item_1}
-                  onClick={() => router.push("/car-racing")}
+                  onClick={() => router.push("/")}
                 >
                   Car Racing
                 </li>
                 <li
                   className={styles.dropdown_item_2}
-                  onClick={() => router.push("/racers")}
+                  onClick={() => router.push("/motorsport/racers")}
                 >
                   Racers
                 </li>
@@ -98,13 +98,13 @@ function HeaderMoto(props) {
               <ul className={styles.dropdown_menu}>
                 <li
                   className={styles.dropdown_item_1}
-                  onClick={() => router.push("/car-racing")}
+                  onClick={() => router.push("/")}
                 >
                   Car Racing
                 </li>
                 <li
                   className={styles.dropdown_item_2}
-                  onClick={() => router.push("/racers")}
+                  onClick={() => router.push("/motorsport/racers")}
                 >
                   Racers
                 </li>

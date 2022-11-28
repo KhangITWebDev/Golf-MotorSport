@@ -183,6 +183,17 @@ button {
   width: 100%;
   margin: 0 auto !important;
 }
+.main {
+  @media screen and (min-width: 1280px) {
+    padding: 0 45px;
+  }
+  @media screen and (min-width: 1440px) {
+    padding: 0 90px;
+  }
+  @media screen and (max-width: 992px) {
+    padding: 0 25px;
+  }
+}
 .heading {
   width: fit-content;
   margin: 0 auto;

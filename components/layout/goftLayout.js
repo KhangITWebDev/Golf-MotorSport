@@ -7,7 +7,7 @@ function GoftLayout({ children }) {
     <>
       <div className="wrapper-project">
         <HeaderGoft />
-        {children}
+        <div className="main">{children}</div>
         <Footer />
       </div>
     </>
