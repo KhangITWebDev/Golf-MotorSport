@@ -11,7 +11,7 @@
     padding: 15px 25px;
   }
   &_content {
-    // justify-content: space-between;
+    justify-content: space-between;
     align-items: center;
   }
   .logo {
@@ -34,7 +34,9 @@
       }
     }
     .link {
-      padding-left: 22px;
+      &:not(:last-child) {
+        padding-right: 50px;
+      }
     }
     .dropdown {
       position: relative;

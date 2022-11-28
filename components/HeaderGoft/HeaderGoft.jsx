@@ -8,7 +8,7 @@ function HeaderGoft(props) {
   const router = useRouter();
   return (
     <div className={styles.header}>
-      <div className={"d-flex" + " " + styles.header_content}>
+      <div className={"containers d-flex" + " " + styles.header_content}>
         <div className={styles.logo}>
           <Image alt="logo" src="/images/Logo/Logo11.png" layout="fill" />
         </div>
@@ -26,13 +26,13 @@ function HeaderGoft(props) {
               <ul className={styles.dropdown_menu}>
                 <li
                   className={styles.dropdown_item_1}
-                  onClick={() => router.push("/car-racing")}
+                  onClick={() => router.push("/")}
                 >
                   Car Racing
                 </li>
                 <li
                   className={styles.dropdown_item_2}
-                  onClick={() => router.push("/racers")}
+                  onClick={() => router.push("/motorsport/racers")}
                 >
                   Racers
                 </li>
@@ -50,13 +50,13 @@ function HeaderGoft(props) {
               <ul className={styles.dropdown_menu}>
                 <li
                   className={styles.dropdown_item_1}
-                  onClick={() => router.push("/car-racing")}
+                  onClick={() => router.push("/")}
                 >
                   Car Racing
                 </li>
                 <li
                   className={styles.dropdown_item_2}
-                  onClick={() => router.push("/racers")}
+                  onClick={() => router.push("/motorsport/racers")}
                 >
                   Racers
                 </li>
@@ -74,13 +74,13 @@ function HeaderGoft(props) {
               <ul className={styles.dropdown_menu}>
                 <li
                   className={styles.dropdown_item_1}
-                  onClick={() => router.push("/car-racing")}
+                  onClick={() => router.push("/")}
                 >
                   Car Racing
                 </li>
                 <li
                   className={styles.dropdown_item_2}
-                  onClick={() => router.push("/racers")}
+                  onClick={() => router.push("/motorsport/racers")}
                 >
                   Racers
                 </li>
@@ -98,103 +98,28 @@ function HeaderGoft(props) {
               <ul className={styles.dropdown_menu}>
                 <li
                   className={styles.dropdown_item_1}
-                  onClick={() => router.push("/car-racing")}
+                  onClick={() => router.push("/")}
                 >
                   Car Racing
                 </li>
                 <li
                   className={styles.dropdown_item_2}
-                  onClick={() => router.push("/racers")}
+                  onClick={() => router.push("/motorsport/racers")}
                 >
                   Racers
                 </li>
                 <li className={styles.dropdown_item_3}>Item 3</li>
               </ul>
-            </a>
-          </Link>
-          <Link href="/">
-            <a
-              className={[styles.link, styles.dropdown].join(" ")}
-              onClick={(e) => e.preventDefault()}
-            >
-              <span>Play & Stay</span>
-              <i className="far fa-chevron-down"></i>
-              <ul className={styles.dropdown_menu}>
-                <li
-                  className={styles.dropdown_item_1}
-                  onClick={() => router.push("/car-racing")}
-                >
-                  Car Racing
-                </li>
-                <li
-                  className={styles.dropdown_item_2}
-                  onClick={() => router.push("/racers")}
-                >
-                  Racers
-                </li>
-                <li className={styles.dropdown_item_3}>Item 3</li>
-              </ul>
-            </a>
-          </Link>
-          <Link href="/">
-            <a
-              className={[styles.link, styles.dropdown].join(" ")}
-              onClick={(e) => e.preventDefault()}
-            >
-              <span>Deals</span>
-              <i className="far fa-chevron-down"></i>
-              <ul className={styles.dropdown_menu}>
-                <li
-                  className={styles.dropdown_item_1}
-                  onClick={() => router.push("/car-racing")}
-                >
-                  Car Racing
-                </li>
-                <li
-                  className={styles.dropdown_item_2}
-                  onClick={() => router.push("/racers")}
-                >
-                  Racers
-                </li>
-                <li className={styles.dropdown_item_3}>Item 3</li>
-              </ul>
-            </a>
-          </Link>
-          <Link href="/">
-            <a
-              className={[styles.link, styles.dropdown].join(" ")}
-              onClick={(e) => e.preventDefault()}
-            >
-              <span>COMMUNITY</span>
-              <i className="far fa-chevron-down"></i>
-              <ul className={styles.dropdown_menu}>
-                <li
-                  className={styles.dropdown_item_1}
-                  onClick={() => router.push("/car-racing")}
-                >
-                  Car Racing
-                </li>
-                <li
-                  className={styles.dropdown_item_2}
-                  onClick={() => router.push("/racers")}
-                >
-                  Racers
-                </li>
-                <li className={styles.dropdown_item_3}>Item 3</li>
-              </ul>
-            </a>
-          </Link>
-          <Link href="/">
-            <a className={styles.link}>PROSHOP</a>
-          </Link>
-          <Link href="/">
-            <a className={styles.link}>
-              <i className="fal fa-search"></i>
             </a>
           </Link>
           <Link href="/">
             <a className={styles.link}>
-              <i className="fal fa-user"></i>
+              <i className={" " + "fal fa-search"}></i>
+            </a>
+          </Link>
+          <Link href="/">
+            <a className={styles.link}>
+              <i className={"fal fa-user"}></i>
             </a>
           </Link>
         </div>
