@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export function useNavigation(datas, itemsPerPage) {
+export function usePagination(datas, itemsPerPage) {
   const perItem = itemsPerPage;
   const perData = datas;
   const [currentPage, setCurrentPage] = useState(1);

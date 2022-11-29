@@ -8,12 +8,13 @@ import "swiper/css/navigation";
 import { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import { store } from "../store";
-import MainLayout from "../components/layout/mainLayout";
 
 function MyApp({ Component, pageProps }) {
   const [showChild, setShowChild] = useState(false);
   useEffect(() => {
     setShowChild(true);
+    import("bootstrap/dist/js/bootstrap");
+    import("bootstrap/dist/js/bootstrap.bundle");
   }, []);
 
   if (!showChild) {

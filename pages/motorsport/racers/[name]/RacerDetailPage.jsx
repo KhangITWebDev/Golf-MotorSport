@@ -8,7 +8,7 @@ import {
   Video,
 } from "../../../../utils/DataDemo/RacerDetailPage/data";
 import { Racers } from "../../../../utils/DataDemo/Racers/data";
-import removeAccents, { convertDate } from "../../../../utils/removeAccents";
+import { removeAccents, convertDate } from "../../../../utils/function";
 import styles from "./RacerDetails.module.scss";
 
 function RacerDetailPage(props) {

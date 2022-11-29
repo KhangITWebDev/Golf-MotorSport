@@ -76,7 +76,7 @@ export const getDateArray = function (start, end) {
   arr.push(new Date(end));
   return arr;
 };
-const removeAccents = (str) => {
+export const removeAccents = (str) => {
   str = str.toLowerCase();
   str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
   str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
@@ -115,4 +115,3 @@ const removeAccents = (str) => {
   str = str.replaceAll("---", "-");
   return str.charAt(0).toLowerCase() + str.slice(1);
 };
-export default removeAccents;

@@ -1,11 +1,12 @@
 import React from "react";
+import GoftLayout from "../../../../components/layout/goftLayout";
 import GoftNews from "./GoftNews";
 
 function Index(props) {
   return (
-    <div>
+    <GoftLayout>
       <GoftNews />
-    </div>
+    </GoftLayout>
   );
 }
 

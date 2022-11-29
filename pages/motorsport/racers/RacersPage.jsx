@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { Racers } from "../../../utils/DataDemo/Racers/data";
-import removeAccents from "../../../utils/removeAccents";
+import { removeAccents } from "../../../utils/function";
 import styles from "./Racers.module.scss";
 
 function RacersPage(props) {

@@ -8,19 +8,20 @@ function HeaderGoft(props) {
   const router = useRouter();
   return (
     <div className={styles.header}>
-      <div className={"containers d-flex" + " " + styles.header_content}>
-        <div className={styles.logo}>
+      <div className={"main d-flex" + " " + styles.header_content}>
+        <div
+          className={styles.logo}
+          style={{ cursor: "pointer" }}
+          onClick={() => router.push("/")}
+        >
           <Image alt="logo" src="/images/Logo/Logo11.png" layout="fill" />
         </div>
         <div className={styles.menu_list + " " + "d-flex"}>
-          <Link href="/">
+          <Link href="/golf">
             <a className={styles.link}>Home</a>
           </Link>
-          <Link href="/">
-            <a
-              className={[styles.link, styles.dropdown].join(" ")}
-              onClick={(e) => e.preventDefault()}
-            >
+          <Link href="/golf/news">
+            <a className={[styles.link, styles.dropdown].join(" ")}>
               <span>News</span>
               <i className="far fa-chevron-down"></i>
               <ul className={styles.dropdown_menu}>
@@ -40,10 +41,10 @@ function HeaderGoft(props) {
               </ul>
             </a>
           </Link>
-          <Link href="/">
+          <Link href="/golf/tour">
             <a
               className={[styles.link, styles.dropdown].join(" ")}
-              onClick={(e) => e.preventDefault()}
+              // onClick={(e) => e.preventDefault()}
             >
               <span>Tour</span>
               <i className="far fa-chevron-down"></i>

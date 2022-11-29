@@ -8,12 +8,16 @@ function HeaderMoto(props) {
   const router = useRouter();
   return (
     <div className={styles.header}>
-      <div className={"containers d-flex" + " " + styles.header_content}>
-        <div className={styles.logo}>
+      <div className={"main d-flex" + " " + styles.header_content}>
+        <div
+          className={styles.logo}
+          style={{ cursor: "pointer" }}
+          onClick={() => router.push("/")}
+        >
           <Image alt="logo" src="/images/Logo/Logo11.png" layout="fill" />
         </div>
         <div className={styles.menu_list + " " + "d-flex"}>
-          <Link href="/">
+          <Link href="/motorsport">
             <a className={styles.link}>Home</a>
           </Link>
           <Link href="/">

@@ -8,7 +8,7 @@ import {
   Stading,
   TrendingCRP,
 } from "../../../utils/DataDemo/CarRacingPage/data";
-import removeAccents, { convertDate } from "../../../utils/removeAccents";
+import { convertDate, removeAccents } from "../../../utils/function";
 import styles from "./CarRacing.module.scss";
 
 function CarRacingTour(props) {

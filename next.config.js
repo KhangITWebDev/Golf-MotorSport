@@ -10,6 +10,7 @@ module.exports = async (phase, { defaultConfig }) => {
         "api.fostech.vn",
         "d25k1955sgf0bb.cloudfront.net",
         "alba-web-holding.herokuapp.com",
+        "flagcdn.com",
       ],
     },
     env: {
