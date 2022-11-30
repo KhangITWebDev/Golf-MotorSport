@@ -7,9 +7,20 @@ import { CarRacingTour, TrendingCRT } from "../../utils/DataDemo/CarRacingTour";
 import { FeedRacingTour, Slide } from "../../utils/DataDemo/FeedRacingTour";
 import MainLayout from "../../components/layout/mainLayout";
 import { useRouter } from "next/router";
+import Swal from "sweetalert2";
 
 function HomePage(props) {
   const router = useRouter();
+  const commingSoon = (e) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "Comming Soon",
+      text: "We are comming soon",
+      icon: "warning",
+      showCancelButton: false,
+      confirmButtonText: "OK",
+    });
+  };
   return (
     <MainLayout>
       <div className={styles.home_page}>
@@ -35,9 +46,7 @@ function HomePage(props) {
                 />
                 <div className={styles.top_content}>
                   <span>Motorsports</span>
-                  <button onClick={() => router.push("/motorsport")}>
-                    More
-                  </button>
+                  <button onClick={commingSoon}>More</button>
                 </div>
               </div>
             </div>

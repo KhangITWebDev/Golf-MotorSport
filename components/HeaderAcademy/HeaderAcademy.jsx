@@ -3,9 +3,20 @@ import styles from "./headerAcademy.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Swal from "sweetalert2";
 
 function HeaderAcademy(props) {
   const router = useRouter();
+  const commingSoon = (e) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "Comming Soon",
+      text: "We are comming soon",
+      icon: "warning",
+      showCancelButton: false,
+      confirmButtonText: "OK",
+    });
+  };
   return (
     <div className={styles.header}>
       <div className={"main d-flex" + " " + styles.header_content}>
@@ -21,13 +32,15 @@ function HeaderAcademy(props) {
             <a className={styles.link}>COURSE</a>
           </Link>
           <Link href="/goft/booking">
-            <a className={styles.link}>BOOKING</a>
+            <a onClick={commingSoon} className={styles.link}>
+              BOOKING
+            </a>
           </Link>
           <Link href="/golf">
             <a className={styles.link}>NEWS</a>
           </Link>
           <Link href="/">
-            <a className={styles.link}>
+            <a className={styles.link} onClick={commingSoon}>
               <i className="fal fa-search"></i>
             </a>
           </Link>

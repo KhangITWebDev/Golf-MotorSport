@@ -31,17 +31,42 @@ export default function HeaderMain(props) {
           <Link href="/golf/course">
             <a className={styles.link}>Golf</a>
           </Link>
-          <Link href="/motorsport">
-            <a className={styles.link}>Motorsport</a>
+          <Link href="/">
+            <a onClick={commingSoon} className={styles.link}>
+              Motorsport
+            </a>
           </Link>
           <Link href="/">
-            <a className={styles.link}>
+            <a className={styles.link} onClick={commingSoon}>
               <i className="fal fa-search"></i>
             </a>
           </Link>
           <Link href="/">
-            <a className={styles.link}>
-              <i className="fal fa-user"></i>
+            <a
+              className={[styles.link, styles.dropdown].join(" ")}
+              onClick={(e) => e.preventDefault()}
+            >
+              <span>
+                <i className="fal fa-user-alt"></i>
+              </span>
+              <ul
+                className={[styles.dropdown_menu, styles.dropdown_user].join(
+                  " "
+                )}
+              >
+                <li
+                  className={styles.dropdown_item_1}
+                  onClick={() => router.push("/golf/sign-up")}
+                >
+                  Sign Up
+                </li>
+                <li
+                  className={styles.dropdown_item_2}
+                  onClick={() => router.push("/golf/sign-in")}
+                >
+                  Sign In
+                </li>
+              </ul>
             </a>
           </Link>
         </div>
