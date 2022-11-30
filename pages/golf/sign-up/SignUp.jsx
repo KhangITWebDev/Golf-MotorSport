@@ -27,7 +27,7 @@ function SignUp(props) {
             <input type="text" placeholder="Name" />
             <input type="text" placeholder="Phone" />
             <input type="text" placeholder="Email" />
-            <div className={styles.list_checkBox}>
+            {/* <div className={styles.list_checkBox}>
               <div className={styles.item}>
                 <input type="checkbox" name="" id="" />
                 <span>85-87 Nguyen Co Thach, An Loi Đong, Q.2, TPHCM</span>
@@ -40,7 +40,7 @@ function SignUp(props) {
                 <input type="checkbox" name="" id="" />
                 <span>Location 2</span>
               </div>
-            </div>
+            </div> */}
             <div
               className={styles.button + " " + "d-flex justify-content-center"}
             >
