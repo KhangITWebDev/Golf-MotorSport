@@ -35,7 +35,7 @@ function SignIn(props) {
             <div
               className={styles.button + " " + "d-flex justify-content-center"}
             >
-              <button>Sign Up</button>
+              <button>Sign In</button>
             </div>
           </form>
         </div>
