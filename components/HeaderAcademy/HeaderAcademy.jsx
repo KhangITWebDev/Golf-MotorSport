@@ -17,24 +17,21 @@ function HeaderAcademy(props) {
           <Image alt="logo" src="/images/Logo/Logo11.png" layout="fill" />
         </div>
         <div className={styles.menu_list + " " + "d-flex"}>
-          <Link href="/academy/course">
+          <Link href="/golf/course">
             <a className={styles.link}>COURSE</a>
           </Link>
-          <Link href="/academy/sign-up">
-            <a className={styles.link}>SIGN UP</a>
-          </Link>
-          <Link href="/academy/sign-in">
-            <a className={styles.link}>SIGN IN</a>
-          </Link>
-          <Link href="/academy/booking">
+          <Link href="/goft/booking">
             <a className={styles.link}>BOOKING</a>
+          </Link>
+          <Link href="/golf">
+            <a className={styles.link}>NEWS</a>
           </Link>
           <Link href="/">
             <a className={styles.link}>
               <i className="fal fa-search"></i>
             </a>
           </Link>
-          <Link href="/">
+          {/* <Link href="/">
             <a
               className={[styles.link, styles.dropdown].join(" ")}
               onClick={(e) => e.preventDefault()}
@@ -83,6 +80,34 @@ function HeaderAcademy(props) {
                   onClick={() => router.push("/motorsport/racers")}
                 >
                   LOGOUT
+                </li>
+              </ul>
+            </a>
+          </Link> */}
+          <Link href="/">
+            <a
+              className={[styles.link, styles.dropdown].join(" ")}
+              onClick={(e) => e.preventDefault()}
+            >
+              <span>
+                <i className="fal fa-user-alt"></i>
+              </span>
+              <ul
+                className={[styles.dropdown_menu, styles.dropdown_user].join(
+                  " "
+                )}
+              >
+                <li
+                  className={styles.dropdown_item_1}
+                  onClick={() => router.push("/golf/sign-up")}
+                >
+                  Sign Up
+                </li>
+                <li
+                  className={styles.dropdown_item_2}
+                  onClick={() => router.push("/golf/sign-in")}
+                >
+                  Sign In
                 </li>
               </ul>
             </a>

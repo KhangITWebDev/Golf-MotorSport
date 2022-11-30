@@ -4,29 +4,24 @@ export const CoachData = [
     name: "",
   },
 ];
-export const FeeData = [
+export const LocationData = [
   {
     id: 1,
-    image: "/images/Academy/Course/fee1.png",
-    title: "BASIC COURSES",
-    subTitle: "<p>1:1 class or up to 1:2 <br/> For beginners</p>",
-    price: "20.000.000 VND",
+    image: "/images/Academy/Course/location1.png",
+    title: "LIO HOLDINGS",
+    subTitle: "<p>Add: 85-87 Nguyen Co Thach, An Loi Đong, Q.2, TPHCM</p>",
   },
   {
     id: 2,
-    image: "/images/Academy/Course/fee2.png",
-    title: "CHILDREN'S COURSES",
-    subTitle:
-      "<p>Classes 1:1 or up to 1:5 <br/> For preschool and elementary school</p>",
-    price: "30.000.000 VND",
+    image: "/images/Academy/Course/location2.png",
+    title: "LIO HOLDINGS",
+    subTitle: "<p>Add: 85-87 Nguyen Co Thach, An Loi Đong, Q.2, TPHCM",
   },
   {
     id: 3,
-    image: "/images/Academy/Course/fee1.png",
-    title: "ADVANCED GOLF COURSE",
-    subTitle:
-      "<p>Advanced 1-on-1 programs tailored to <br /> each student's requirements</p>",
-    price: "50.000.000 VND",
+    image: "/images/Academy/Course/location3.png",
+    title: "LIO HOLDINGS",
+    subTitle: "Add: 85-87 Nguyen Co Thach, An Loi Đong, Q.2, TPHCM",
   },
 ];
 

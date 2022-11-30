@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { FeeData } from "../../../utils/DataDemo/Academy/dataAcademyPage";
+import { LocationData } from "../../../utils/DataDemo/Academy/dataAcademyPage";
 import styles from "./Course.module.scss";
 
 function Course(props) {
@@ -117,13 +117,49 @@ function Course(props) {
           </button>
         </div>
       </div>
-      <div className={[styles.location, styles.full].join(" ")}>
+      <div className={styles.fee}>
+        <div className="heading">
+          <h2>Fee</h2>
+          <div className="line" style={{ width: "100%" }}></div>
+        </div>
+        <div className={styles.fee_list}>
+          <Image
+            alt="Fee"
+            layout="fill"
+            src="/images/Academy/Course/fee.png"
+          ></Image>
+        </div>
+        <div className={styles.button + " " + "d-flex justify-content-center"}>
+          <button>More</button>
+        </div>
+      </div>
+      <div className={styles.location}>
         <div className="heading">
           <h2>Location</h2>
-          <div className="line" style={{ width: "60%" }}></div>
+          <div className="line" style={{ width: "80%" }}></div>
         </div>
-        <div className={styles.content}>
-          <Image alt="Map" src="/images/Academy/Course/Map.png" layout="fill" />
+        <div className={styles.location_list}>
+          {LocationData.map((item, index) => (
+            <div className={styles.item} key={index}>
+              <div className={styles.image}>
+                <Image alt="Fee" src={item.image} layout="fill" />
+              </div>
+              <Link href="/">
+                <a className={styles.title}>{item.title}</a>
+              </Link>
+              <p
+                className={styles.subTitle}
+                dangerouslySetInnerHTML={{ __html: item.subTitle }}
+              ></p>
+              <div
+                className={
+                  styles.button + " " + "d-flex justify-content-center"
+                }
+              >
+                <button>Location</button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
       <div className={styles.coach}>
@@ -138,7 +174,7 @@ function Course(props) {
               <br />
               <span>LED BY THE HEAD COACH OF VIETNAM NATIONAL GOLF TEAM</span>
             </h3>
-            <h4>NGUYEN THAI DUONG</h4>
+            <h4>NGUYEN GIA BAO</h4>
             <h5>Founder of | Head coaches</h5>
             <p>
               + Coach Nguyen Thai Duong is the head coach leading the Vietnam
@@ -213,39 +249,23 @@ function Course(props) {
           </div>
         </div>
       </div>
-      <div className={styles.fee}>
+      <div className={styles.contact}>
         <div className="heading">
-          <h2>Fee</h2>
-          <div className="line" style={{ width: "100%" }}></div>
+          <h2>CONTACT</h2>
+          <div className="line" style={{ width: "80%" }}></div>
         </div>
-        <div className={styles.fee_list}>
-          {FeeData.map((item, index) => (
-            <div className={styles.item} key={index}>
-              <div className={styles.image}>
-                <Image alt="Fee" src={item.image} layout="fill" />
-              </div>
-              <div className="d-flex flex-column align-items-center">
-                <Link href="/">
-                  <a className={styles.title}>{item.title}</a>
-                </Link>
-                <p
-                  className={styles.subTitle}
-                  dangerouslySetInnerHTML={{ __html: item.subTitle }}
-                ></p>
-                <span className={styles.price}>{item.price}</span>
-                <div
-                  className={
-                    styles.button + " " + "d-flex justify-content-center"
-                  }
-                >
-                  <button>Sign Up</button>
-                </div>
-              </div>
+        <div className={"col-6 m-auto" + " " + styles.form}>
+          <form action="">
+            <input type="text" placeholder="Name" />
+            <input type="text" placeholder="Phone" />
+            <input type="text" placeholder="Email" />
+            <textarea type="" placeholder="Note" />
+            <div
+              className={styles.button + " " + "d-flex justify-content-center"}
+            >
+              <button>Send</button>
             </div>
-          ))}
-        </div>
-        <div className={styles.button + " " + "d-flex justify-content-center"}>
-          <button>More</button>
+          </form>
         </div>
       </div>
     </div>

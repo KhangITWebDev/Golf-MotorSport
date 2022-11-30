@@ -3,8 +3,19 @@ import styles from "./headerMain.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Swal from "sweetalert2";
 
 export default function HeaderMain(props) {
+  const commingSoon = (e) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "Comming Soon",
+      text: "We are comming soon",
+      icon: "warning",
+      showCancelButton: false,
+      confirmButtonText: "OK",
+    });
+  };
   const router = useRouter();
   return (
     <div className={styles.header}>
