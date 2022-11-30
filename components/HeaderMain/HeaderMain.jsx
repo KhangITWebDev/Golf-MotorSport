@@ -17,7 +17,7 @@ export default function HeaderMain(props) {
           <Image alt="logo" src="/images/Logo/Logo11.png" layout="fill" />
         </div>
         <div className={styles.menu_list + " " + "d-flex"}>
-          <Link href="/golf">
+          <Link href="/golf/course">
             <a className={styles.link}>Golf</a>
           </Link>
           <Link href="/motorsport">

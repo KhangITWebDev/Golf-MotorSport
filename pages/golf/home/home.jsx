@@ -138,7 +138,7 @@ function Home(props) {
                     styles.button + " " + "d-flex justify-content-center"
                   }
                 >
-                  <button>More</button>
+                  <button onClick={() => router.push("/tour")}>More</button>
                 </div>
               </div>
             </div>
@@ -172,7 +172,7 @@ function Home(props) {
                     styles.button + " " + "d-flex justify-content-center"
                   }
                 >
-                  <button>More</button>
+                  <button onClick={() => router.push("/tour")}>More</button>
                 </div>
               </div>
             </div>
