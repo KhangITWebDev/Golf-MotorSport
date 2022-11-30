@@ -30,15 +30,15 @@ function SignUp(props) {
             <div className={styles.list_checkBox}>
               <div className={styles.item}>
                 <input type="checkbox" name="" id="" />
-                <span>Lio Holding 1</span>
+                <span>85-87 Nguyen Co Thach, An Loi Đong, Q.2, TPHCM</span>
               </div>
               <div className={styles.item}>
                 <input type="checkbox" name="" id="" />
-                <span>Lio Holding 2</span>
+                <span>Location 1</span>
               </div>
               <div className={styles.item}>
                 <input type="checkbox" name="" id="" />
-                <span>Lio Holding 3</span>
+                <span>Location 2</span>
               </div>
             </div>
             <div

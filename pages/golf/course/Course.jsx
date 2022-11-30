@@ -17,7 +17,7 @@ function Course(props) {
         />
         <div className={styles.content}>
           <h2>COURSE GOLF</h2>
-          <button>Sign Up</button>
+          <button onClick={() => router.push("/golf/sign-up")}>Sign Up</button>
         </div>
       </div>
       <div className={styles.golf_options}>
