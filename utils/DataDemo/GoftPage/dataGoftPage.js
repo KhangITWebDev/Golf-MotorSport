@@ -287,6 +287,93 @@ export const LatestGoftersDetail = [
 export const RelatedGolfNewsDetail = [
   {
     id: 1,
-    image: "",
+    image: "/images/Golf/News/related1.png",
+    type: "Trending",
+    title: "Power Rankings: World Wide Technology",
+  },
+  {
+    id: 2,
+    image: "/images/Golf/News/related2.png",
+    type: "Trending",
+    title: "Power Rankings: World Wide Technology",
+  },
+  {
+    id: 3,
+    image: "/images/Golf/News/related3.png",
+    type: "Feature",
+    title: "Power Rankings: World Wide Technology",
+  },
+  {
+    id: 4,
+    image: "/images/Golf/News/related4.png",
+    type: "Trending",
+    title: "Power Rankings: World Wide Technology",
+  },
+  {
+    id: 5,
+    image: "/images/Golf/News/related5.png",
+    type: "Feature",
+    title: "Power Rankings: World Wide Technology",
+  },
+  {
+    id: 6,
+    image: "/images/Golf/News/related5.png",
+    type: "Trending",
+    title: "Power Rankings: World Wide Technology",
+  },
+];
+
+export const MoreGolfNews = [
+  {
+    id: 1,
+    title: "Power Rankings: World Wide Technology",
+    picture: "/images/Golf/News/more1.png",
+    type: "Trending",
+  },
+  {
+    id: 2,
+    title:
+      "Seamus Power wins Butterfield Bermuda Championship for second PGA TOUR title",
+    picture: "/images/Golf/News/more2.png",
+    type: "Feature",
+  },
+  {
+    id: 3,
+    title: "2022-23 Medical Extensions",
+    picture: "/images/Golf/News/more3.png",
+    type: "Trending",
+  },
+  {
+    id: 4,
+    title: "Cut prediction: Butterfield Bermuda Championship",
+    picture: "/images/Golf/News/more4.png",
+    type: "Trending",
+  },
+];
+export const DontMissGolfNews = [
+  {
+    id: 1,
+    title: "Power Rankings: World Wide Technology",
+    picture: "/images/Golf/News/dont1.png",
+    type: "Trending",
+  },
+  {
+    id: 2,
+    title:
+      "Seamus Power wins Butterfield Bermuda Championship for second PGA TOUR title",
+    picture: "/images/Golf/News/dont2.png",
+    type: "Feature",
+  },
+  {
+    id: 3,
+    title: "2022-23 Medical Extensions",
+    picture: "/images/Golf/News/dont3.png",
+    type: "Trending",
+  },
+  {
+    id: 4,
+    title: "Cut prediction: Butterfield Bermuda Championship",
+    picture: "/images/Golf/News/dont3.png",
+    type: "Trending",
   },
 ];

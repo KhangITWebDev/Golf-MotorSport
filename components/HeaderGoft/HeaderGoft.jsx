@@ -89,11 +89,8 @@ function HeaderGoft(props) {
               </ul>
             </a>
           </Link>
-          <Link href="/">
-            <a
-              className={[styles.link, styles.dropdown].join(" ")}
-              onClick={(e) => e.preventDefault()}
-            >
+          <Link href="/academy/course">
+            <a className={[styles.link, styles.dropdown].join(" ")}>
               <span>Academy</span>
               <i className="far fa-chevron-down"></i>
               <ul className={styles.dropdown_menu}>

@@ -6,8 +6,10 @@ import { FeedTour } from "../../utils/DataDemo/FeedTour";
 import { CarRacingTour, TrendingCRT } from "../../utils/DataDemo/CarRacingTour";
 import { FeedRacingTour, Slide } from "../../utils/DataDemo/FeedRacingTour";
 import MainLayout from "../../components/layout/mainLayout";
+import { useRouter } from "next/router";
 
 function HomePage(props) {
+  const router = useRouter();
   return (
     <MainLayout>
       <div className={styles.home_page}>
@@ -22,7 +24,7 @@ function HomePage(props) {
                 />
                 <div className={styles.top_content}>
                   <span>Golf</span>
-                  <button>More</button>
+                  <button onClick={() => router.push("/golf")}>More</button>
                 </div>
               </div>
               <div className={"col-6" + " " + styles.top_item}>
@@ -33,7 +35,9 @@ function HomePage(props) {
                 />
                 <div className={styles.top_content}>
                   <span>Motorsports</span>
-                  <button>More</button>
+                  <button onClick={() => router.push("/motorsport")}>
+                    More
+                  </button>
                 </div>
               </div>
             </div>

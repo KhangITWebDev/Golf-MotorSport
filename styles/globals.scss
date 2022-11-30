@@ -247,3 +247,38 @@ button {
     }
   }
 }
+#study-program {
+  .accordion-item {
+    border: 0;
+  }
+  .accordion-button {
+    border-radius: 0px;
+    background: #ebebeb;
+    padding: 22px 33px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0b2b20;
+    &::after {
+      background-image: url(https://cdn.imgbin.com/5/21/25/imgbin-font-awesome-computer-icons-chevron-corporation-font-button-zwLZDWSgxpp3sEu63Q2JMZghv.jpg);
+    }
+    &:not(.collapsed)::after {
+      background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUFti-tedO87YylMvi1iBnEf5sA3ZqyRue7A&usqp=CAU);
+    }
+    &:hover {
+      color: #000;
+      background: #ebebeb;
+      border: none;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+  .accordion-body {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.8;
+    padding: 20px 34px;
+    border: 0.25px solid #565656;
+  }
+}
