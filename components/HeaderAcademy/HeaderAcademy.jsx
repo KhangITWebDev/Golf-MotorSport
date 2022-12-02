@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./headerAcademy.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
+import { Container, Dropdown, Nav, Navbar } from "react-bootstrap";
 
 function HeaderAcademy(props) {
-  const router = useRouter();
   const commingSoon = (e) => {
     e.preventDefault();
     Swal.fire({
@@ -17,116 +17,110 @@ function HeaderAcademy(props) {
       confirmButtonText: "OK",
     });
   };
+  const router = useRouter();
+  const [show, setShow] = useState(false);
+  const showDropdown = (e) => {
+    setShow(!show);
+  };
+  const hideDropdown = (e) => {
+    setShow(false);
+  };
   return (
-    <div className={styles.header}>
-      <div className={"main d-flex" + " " + styles.header_content}>
-        <div
-          className={styles.logo}
-          style={{ cursor: "pointer" }}
-          onClick={() => router.push("/")}
-        >
-          <Image alt="logo" src="/images/Logo/Logo11.png" layout="fill" />
-        </div>
-        <div className={styles.menu_list + " " + "d-flex"}>
-          <Link href="/golf/course">
-            <a className={styles.link}>COURSE</a>
-          </Link>
-          <Link href="/goft/booking">
-            <a onClick={commingSoon} className={styles.link}>
-              BOOKING
-            </a>
-          </Link>
-          <Link href="/golf">
-            <a className={styles.link}>NEWS</a>
-          </Link>
-          <Link href="/">
-            <a className={styles.link} onClick={commingSoon}>
-              <i className="fal fa-search"></i>
-            </a>
-          </Link>
-          {/* <Link href="/">
-            <a
-              className={[styles.link, styles.dropdown].join(" ")}
-              onClick={(e) => e.preventDefault()}
-            >
-              <span>
-                <i className="fal fa-user-alt"></i>
-              </span>
-              <ul
-                className={[styles.dropdown_menu, styles.dropdown_user].join(
-                  " "
-                )}
+    <div>
+      <Navbar
+        expand="lg"
+        id="navbar_menu"
+        fixed="top"
+        className={styles.header}
+      >
+        <Container className={styles.header_content}>
+          <div
+            className={styles.logo}
+            style={{ cursor: "pointer" }}
+            onClick={() => router.push("/")}
+          >
+            <Image alt="logo" src="/images/Logo/Logo11.png" layout="fill" />
+          </div>
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            className={styles.navToggle}
+          >
+            <i
+              className="fal fa-bars"
+              color="#fff"
+              style={{ fontSize: 28 }}
+            ></i>
+          </Navbar.Toggle>
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className={styles.header_menu}>
+              <Dropdown>
+                <Dropdown.Toggle
+                  onClick={() => router.push("/academy")}
+                  variant="default"
+                  id="dropdown-cafe"
+                >
+                  Course
+                </Dropdown.Toggle>
+              </Dropdown>
+              <Dropdown>
+                <Dropdown.Toggle
+                  variant="default"
+                  id="dropdown-cafe"
+                  onClick={commingSoon}
+                >
+                  Booking
+                </Dropdown.Toggle>
+              </Dropdown>
+              <Dropdown>
+                <Dropdown.Toggle
+                  variant="default"
+                  id="dropdown-cafe"
+                  onClick={() => router.push("/golf")}
+                >
+                  News
+                </Dropdown.Toggle>
+              </Dropdown>
+              <Dropdown>
+                <Dropdown.Toggle variant="default" id="dropdown-cafe">
+                  <i className="fal fa-search"></i>
+                </Dropdown.Toggle>
+              </Dropdown>
+              <Dropdown
+                show={show}
+                onMouseEnter={showDropdown}
+                onMouseLeave={hideDropdown}
               >
-                <li
-                  className={styles.dropdown_item_1}
-                  onClick={() => router.push("/")}
+                <Dropdown.Toggle variant="default" id="dropdown-user">
+                  <i className="fal fa-user-alt"></i>
+                </Dropdown.Toggle>
+                <Dropdown.Menu
+                  aria-labelledby="dropdown-user"
+                  id="dropdown_end"
                 >
-                  <span>Hello,</span>
-                  <span>vinhnguyen@fostech.vn</span>
-                </li>
-                <li
-                  className={styles.dropdown_item_2}
-                  onClick={() => router.push("/motorsport/racers")}
-                >
-                  MANAGE PROFILE
-                </li>
-                <li
-                  className={styles.dropdown_item_3}
-                  onClick={() => router.push("/motorsport/racers")}
-                >
-                  NOTIFICATION SETTINGS
-                </li>
-                <li
-                  className={styles.dropdown_item_4}
-                  onClick={() => router.push("/motorsport/racers")}
-                >
-                  FAVORITE PLAYERS
-                </li>
-                <li
-                  className={styles.dropdown_item_5}
-                  onClick={() => router.push("/motorsport/racers")}
-                >
-                  CHANGE PASSWORD
-                </li>
-                <li
-                  className={styles.dropdown_item_6}
-                  onClick={() => router.push("/motorsport/racers")}
-                >
-                  LOGOUT
-                </li>
-              </ul>
-            </a>
-          </Link> */}
-          <Link href="/">
-            <a
-              className={[styles.link, styles.dropdown].join(" ")}
-              onClick={(e) => e.preventDefault()}
-            >
-              <span>
-                <i className="fal fa-user-alt"></i>
-              </span>
-              <ul
-                className={[styles.dropdown_menu, styles.dropdown_user].join(
-                  " "
-                )}
-              >
-                <li
-                  className={styles.dropdown_item_1}
-                  onClick={() => router.push("/golf/sign-up")}
-                >
-                  Sign Up
-                </li>
-                <li
-                  className={styles.dropdown_item_2}
-                  onClick={() => router.push("/golf/sign-in")}
-                >
-                  Sign In
-                </li>
-              </ul>
-            </a>
-          </Link>
-        </div>
-      </div>
+                  <Dropdown.Item
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      router.push("/academy/sign-up");
+                    }}
+                  >
+                    Sign Up
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      router.push("/academy/sign-in");
+                    }}
+                  >
+                    Sign In
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </div>
   );
 }

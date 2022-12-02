@@ -8,7 +8,7 @@ function HeaderMoto(props) {
   const router = useRouter();
   return (
     <div className={styles.header}>
-      <div className={"main d-flex" + " " + styles.header_content}>
+      <div className={"container d-flex" + " " + styles.header_content}>
         <div
           className={styles.logo}
           style={{ cursor: "pointer" }}

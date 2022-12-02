@@ -4,7 +4,7 @@ import styles from "./SignUp.module.scss";
 
 function SignUp(props) {
   return (
-    <div className={styles.sign_up_page}>
+    <div className={styles.sign_up_page + " " + "container"}>
       <div className="heading">
         <h2>Sign Up</h2>
         <div className="line" style={{ width: "100%" }}></div>
@@ -27,20 +27,20 @@ function SignUp(props) {
             <input type="text" placeholder="Name" />
             <input type="text" placeholder="Phone" />
             <input type="text" placeholder="Email" />
-            <div className={styles.list_checkBox}>
+            {/* <div className={styles.list_checkBox}>
               <div className={styles.item}>
                 <input type="checkbox" name="" id="" />
-                <span>Lio Holding 1</span>
+                <span>85-87 Nguyen Co Thach, An Loi Đong, Q.2, TPHCM</span>
               </div>
               <div className={styles.item}>
                 <input type="checkbox" name="" id="" />
-                <span>Lio Holding 2</span>
+                <span>Location 1</span>
               </div>
               <div className={styles.item}>
                 <input type="checkbox" name="" id="" />
-                <span>Lio Holding 3</span>
+                <span>Location 2</span>
               </div>
-            </div>
+            </div> */}
             <div
               className={styles.button + " " + "d-flex justify-content-center"}
             >

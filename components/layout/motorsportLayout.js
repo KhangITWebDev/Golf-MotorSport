@@ -8,7 +8,7 @@ function MotorSportLayout({ children }) {
     <>
       <div className="wrapper-project">
         <HeaderMoto />
-        <div className="main">{children}</div>
+        <div className="">{children}</div>
         <Footer />
       </div>
     </>

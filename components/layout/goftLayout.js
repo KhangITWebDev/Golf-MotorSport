@@ -7,7 +7,13 @@ function GoftLayout({ children }) {
     <>
       <div className="wrapper-project">
         <HeaderGoft />
-        <div className="main">{children}</div>
+        <div
+          style={{
+            marginTop: 102,
+          }}
+        >
+          {children}
+        </div>
         <Footer />
       </div>
     </>

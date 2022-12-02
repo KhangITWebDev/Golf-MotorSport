@@ -7,7 +7,7 @@ function MainLayout({ children }) {
     <>
       <div className="wrapper-project">
         <HeaderMain />
-        {children}
+        <div style={{ marginTop: 100 }}>{children}</div>
         <Footer />
       </div>
     </>

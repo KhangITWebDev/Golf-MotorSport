@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./headerMain.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { Dropdown } from "react-bootstrap";
 
 export default function HeaderMain(props) {
   const commingSoon = (e) => {
@@ -17,60 +19,91 @@ export default function HeaderMain(props) {
     });
   };
   const router = useRouter();
+  const [show, setShow] = useState(false);
+  const showDropdown = (e) => {
+    setShow(!show);
+  };
+  const hideDropdown = (e) => {
+    setShow(false);
+  };
   return (
-    <div className={styles.header}>
-      <div className={"d-flex main" + " " + styles.header_content}>
-        <div
-          className={styles.logo}
-          style={{ cursor: "pointer" }}
-          onClick={() => router.push("/")}
-        >
-          <Image alt="logo" src="/images/Logo/Logo11.png" layout="fill" />
-        </div>
-        <div className={styles.menu_list + " " + "d-flex"}>
-          <Link href="/golf/course">
-            <a className={styles.link}>Golf</a>
-          </Link>
-          <Link href="/">
-            <a onClick={commingSoon} className={styles.link}>
-              Motorsport
-            </a>
-          </Link>
-          <Link href="/">
-            <a className={styles.link} onClick={commingSoon}>
-              <i className="fal fa-search"></i>
-            </a>
-          </Link>
-          <Link href="/">
-            <a
-              className={[styles.link, styles.dropdown].join(" ")}
-              onClick={(e) => e.preventDefault()}
-            >
-              <span>
-                <i className="fal fa-user-alt"></i>
-              </span>
-              <ul
-                className={[styles.dropdown_menu, styles.dropdown_user].join(
-                  " "
-                )}
+    <div>
+      <Navbar
+        expand="lg"
+        id="navbar_menu"
+        fixed="top"
+        className={styles.header}
+      >
+        <Container className={styles.header_content}>
+          <div
+            className={styles.logo}
+            style={{ cursor: "pointer" }}
+            onClick={() => router.push("/")}
+          >
+            <Image alt="logo" src="/images/Logo/Logo11.png" layout="fill" />
+          </div>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className={styles.header_menu}>
+              <Dropdown>
+                <Dropdown.Toggle
+                  variant="default"
+                  id="dropdown-cafe"
+                  onClick={() => router.push("/academy")}
+                >
+                  Golf
+                </Dropdown.Toggle>
+              </Dropdown>
+              <Dropdown>
+                <Dropdown.Toggle
+                  variant="default"
+                  id="dropdown-cafe"
+                  onClick={commingSoon}
+                >
+                  Motosport
+                </Dropdown.Toggle>
+              </Dropdown>
+              <Dropdown>
+                <Dropdown.Toggle variant="default" id="dropdown-cafe">
+                  <i className="fal fa-search"></i>
+                </Dropdown.Toggle>
+              </Dropdown>
+              <Dropdown
+                show={show}
+                onMouseEnter={showDropdown}
+                onMouseLeave={hideDropdown}
               >
-                <li
-                  className={styles.dropdown_item_1}
-                  onClick={() => router.push("/golf/sign-up")}
+                <Dropdown.Toggle variant="default" id="dropdown-user">
+                  <i className="fal fa-user-alt"></i>
+                </Dropdown.Toggle>
+                <Dropdown.Menu
+                  aria-labelledby="dropdown-user"
+                  id="dropdown_end"
                 >
-                  Sign Up
-                </li>
-                <li
-                  className={styles.dropdown_item_2}
-                  onClick={() => router.push("/golf/sign-in")}
-                >
-                  Sign In
-                </li>
-              </ul>
-            </a>
-          </Link>
-        </div>
-      </div>
+                  <Dropdown.Item
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      router.push("/academy/sign-up");
+                    }}
+                  >
+                    Sign Up
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      router.push("/academy/sign-in");
+                    }}
+                  >
+                    Sign In
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </div>
   );
 }

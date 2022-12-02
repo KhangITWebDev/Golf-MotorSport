@@ -1,47 +1,76 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper";
 import styles from "./footer.module.scss";
 
 function Footer(props) {
   return (
-    <div className={styles.footer}>
-      <div className={"containers"}>
-        <div
-          className={styles.logo_list + " " + "d-flex justify-content-between"}
-        >
-          <div className={styles.logo}>
-            <Image
-              alt="logo"
-              src="/images/Logo/Logo11.png"
-              width={200}
-              height={136}
-            />
-          </div>
-          <div className={styles.logo}>
-            <Image
-              alt="logo"
-              src="/images/Logo/Logo12.png"
-              width={200}
-              height={136}
-            />
-          </div>
-          <div className={styles.logo}>
-            <Image
-              alt="logo"
-              src="/images/Logo/Logo13.png"
-              width={200}
-              height={136}
-            />
-          </div>
-          <div className={styles.logo}>
-            <Image
-              alt="logo"
-              src="/images/Logo/Logo11.png"
-              width={200}
-              height={136}
-            />
-          </div>
+    <div className={styles.footer} id="footer">
+      <div className="container">
+        <div className={styles.logo_list}>
+          <Swiper
+            breakpoints={{
+              1920: {
+                slidesPerView: 4,
+              },
+              1280: {
+                slidesPerView: 4,
+              },
+              992: {
+                slidesPerView: 3,
+              },
+              767: {
+                slidesPerView: 2,
+              },
+              480: {
+                slidesPerView: 1,
+              },
+            }}
+            // slidesPerView={5}
+            spaceBetween={30}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Pagination]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <Image
+                alt="logo"
+                src="/images/Logo/Logo11.png"
+                width={200}
+                height={136}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                alt="logo"
+                src="/images/Logo/Logo12.png"
+                width={200}
+                height={136}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                alt="logo"
+                src="/images/Logo/Logo13.png"
+                width={200}
+                height={136}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                alt="logo"
+                src="/images/Logo/Logo11.png"
+                width={200}
+                height={136}
+              />
+            </SwiperSlide>
+          </Swiper>
         </div>
         <div
           className={styles.menu_list + " " + "d-flex justify-content-between"}

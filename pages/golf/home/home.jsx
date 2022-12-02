@@ -20,7 +20,7 @@ function Home(props) {
   };
   return (
     <div className={styles.home_page}>
-      <div className="">
+      <div className="container">
         <div className={styles.goft_home}>
           <div className="heading">
             <h2>Goft News</h2>

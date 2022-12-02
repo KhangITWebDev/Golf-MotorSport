@@ -5,9 +5,9 @@ import Home from "./home/home";
 
 function index(props) {
   return (
-    <AcademyLayout>
+    <GoftLayout>
       <Home />
-    </AcademyLayout>
+    </GoftLayout>
   );
 }
 

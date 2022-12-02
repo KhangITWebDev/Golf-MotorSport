@@ -1,11 +1,11 @@
 import React from "react";
 import AcademyLayout from "../../../components/layout/academyLayout";
-import Course from "./Course";
+import SignIn from "./SignIn";
 
 function index(props) {
   return (
     <AcademyLayout>
-      <Course />
+      <SignIn />
     </AcademyLayout>
   );
 }

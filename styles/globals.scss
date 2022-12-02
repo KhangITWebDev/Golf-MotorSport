@@ -183,15 +183,143 @@ button {
   width: 100%;
   margin: 0 auto !important;
 }
-.main {
-  @media screen and (min-width: 1280px) {
-    padding: 0 45px;
+// .main {
+//   @media screen and (min-width: 1280px) {
+//     padding: 0 45px;
+//   }
+//   @media screen and (min-width: 1440px) {
+//     padding: 0 90px;
+//   }
+//   @media screen and (max-width: 1279px) {
+//     padding: 0 25px;
+//   }
+// }
+.button {
+  margin-top: 30px;
+  button {
+    background: #0b2b20;
+    border: 2px solid #0b2b20;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 6px 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-transform: uppercase;
+    &:hover {
+      color: rgba(248, 171, 12, 1);
+      border: 2px solid;
+      background: transparent;
+    }
   }
-  @media screen and (min-width: 1440px) {
-    padding: 0 90px;
+}
+#navbar_menu {
+  .dropdown-toggle::after {
+    display: none !important;
   }
-  @media screen and (max-width: 1279px) {
-    padding: 0 25px;
+  .dropdown-menu[data-bs-popper] {
+    left: 0;
+  }
+  #dropdown_end {
+    left: auto;
+    right: 0;
+  }
+  .dropdown {
+    .dropdown-menu {
+      padding: 10px 12px;
+      margin: 0;
+      padding-top: var(--bs-dropdown-spacer);
+    }
+    .dropdown-item {
+      border-radius: 8px;
+      padding: 6px 15px;
+      margin-top: 5px;
+    }
+    .dropdown-toggle {
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #fff;
+      font-size: 18px;
+      padding-right: 0px;
+      padding-left: 40px;
+      &:hover {
+        color: #f8ab0c;
+      }
+    }
+    .btn-check:checked + .btn,
+    .btn.active,
+    .btn.show,
+    .btn:first-child:active,
+    :not(.btn-check) + .btn:active {
+      border-color: transparent !important;
+    }
+    .dropdown-item:focus,
+    .dropdown-item:hover {
+      background-color: #0a58ca;
+      color: #fff;
+      .dropdown-toggle {
+        background-color: #0a58ca;
+        color: #fff !important;
+      }
+    }
+  }
+  .navbar-collapse {
+    flex-grow: 0;
+  }
+}
+#navbar_menu_golf {
+  .dropdown-toggle::after {
+    display: none !important;
+  }
+  .dropdown-menu[data-bs-popper] {
+    left: 0;
+  }
+  #dropdown_end {
+    left: auto;
+    right: 0;
+  }
+  .dropdown {
+    .dropdown-menu {
+      padding: 10px 12px;
+      margin: 0;
+      padding-top: var(--bs-dropdown-spacer);
+    }
+    .dropdown-item {
+      border-radius: 8px;
+      padding: 6px 15px;
+      margin-top: 5px;
+    }
+    .dropdown-toggle {
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #fff;
+      font-size: 18px;
+      padding-right: 0px;
+      padding-left: 35px;
+      &:hover {
+        color: #f8ab0c;
+      }
+    }
+    .btn-check:checked + .btn,
+    .btn.active,
+    .btn.show,
+    .btn:first-child:active,
+    :not(.btn-check) + .btn:active {
+      border-color: transparent !important;
+    }
+    .dropdown-item:focus,
+    .dropdown-item:hover {
+      background-color: #0a58ca;
+      color: #fff;
+      .dropdown-toggle {
+        background-color: #0a58ca;
+        color: #fff !important;
+      }
+    }
+  }
+  .navbar-collapse {
+    flex-grow: 0;
   }
 }
 .heading {
@@ -280,5 +408,93 @@ button {
     line-height: 1.8;
     padding: 20px 34px;
     border: 0.25px solid #565656;
+  }
+}
+#footer .swiper,
+#footer .swiper-wrapper {
+  position: unset !important;
+}
+#footer .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#footer .swiper-pagination {
+  bottom: 15px;
+  z-index: 1;
+  .swiper-pagination-bullet {
+    width: 20px !important;
+    height: 20px !important;
+    margin: 0 10px !important;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: #f8ab0c;
+  }
+}
+#pro-shop {
+  .nav-pills .nav-link {
+    border-radius: 0px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px 0px;
+    width: fit-content;
+    .item {
+      padding-left: 25px;
+    }
+    .sub-item {
+      padding-left: 35px;
+      padding-right: 40px;
+    }
+    .fa-regular.fa-chevron-down {
+      margin-left: 10px;
+    }
+    .fa-solid.fa-grid-2 {
+      margin-right: 10px;
+    }
+  }
+  .nav-pills .nav-link.active {
+    background: #0b2b20;
+    color: #fff;
+  }
+  .tab-content {
+    width: 100%;
+  }
+  .swiper {
+    width: 100%;
+  }
+
+  // .swiper-slide {
+  //   background-position: center;
+  //   background-size: cover;
+  //   width: 300px;
+  //   height: 300px;
+  // }
+
+  // .swiper-slide img {
+  //   display: block;
+  //   width: 100%;
+  // }
+}
+#ProShopDetail {
+  .nav-tabs {
+    border-bottom: none;
+  }
+  .nav-link {
+    border-radius: 0px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0px 0px 8px;
+    margin-right: 35px;
+    width: fit-content;
+    border: none;
+  }
+  .nav-link.active {
+    border-bottom: 3px solid #f8ab0c;
+  }
+  .tab-content {
+    margin-top: 35px;
+    width: 100%;
   }
 }

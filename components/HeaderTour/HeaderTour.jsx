@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 function HeaderTour(props) {
   const router = useRouter();
   return (
-    <div className={styles.header + " " + "main"}>
+    <div className={styles.header + " " + "container"}>
       <div className={"d-flex" + " " + styles.header_content}>
         <div
           className={styles.logo}

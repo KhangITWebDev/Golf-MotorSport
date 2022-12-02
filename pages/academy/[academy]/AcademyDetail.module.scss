@@ -36,20 +36,20 @@
       line-height: 1.4;
     }
   }
-  .full {
-    @media screen and (min-width: 1280px) {
-      margin-left: -45px;
-      margin-right: -45px;
-    }
-    @media screen and (min-width: 1440px) {
-      margin-left: -90px;
-      margin-right: -90px;
-    }
-    @media screen and (max-width: 1279px) {
-      margin-left: -25px;
-      margin-right: -25px;
-    }
-  }
+  // .full {
+  //   @media screen and (min-width: 1280px) {
+  //     margin-left: -45px;
+  //     margin-right: -45px;
+  //   }
+  //   @media screen and (min-width: 1440px) {
+  //     margin-left: -90px;
+  //     margin-right: -90px;
+  //   }
+  //   @media screen and (max-width: 1279px) {
+  //     margin-left: -25px;
+  //     margin-right: -25px;
+  //   }
+  // }
   .banner {
     position: relative;
     height: 600px;
