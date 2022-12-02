@@ -17,14 +17,21 @@ function ProShopDetail(props) {
   const [quantity, setQuantity] = useState(1);
   const [swiper, setSwiper] = React.useState(null);
   useEffect(() => {
-    $(".swiper-pagination-bullet").css({
-      backgroundImage: "url(/images/Academy/AcademyDetail/proshop1.png)",
-      width: 70,
-      height: 70,
-      borderRadius: 0,
-      backgroundPosition: "center",
-      backgroundSize: "contain",
-      opacity: 1,
+    $(".swiper-pagination-bullet").each(function (index) {
+      $(this).css({
+        backgroundImage:
+          index === 0
+            ? "url(/images/Academy/AcademyDetail/proshop1.png)"
+            : index === 1
+            ? "url(/images/Academy/AcademyDetail/proshop2.png)"
+            : "url(/images/Academy/AcademyDetail/proshop3.png)",
+        width: 100,
+        height: 100,
+        borderRadius: 0,
+        backgroundPosition: "center",
+        backgroundSize: "contain",
+        opacity: 1,
+      });
     });
   }, []);
   return (
@@ -75,9 +82,19 @@ function ProShopDetail(props) {
                 />
               </div>
             </SwiperSlide>
+            <button
+              className={styles.btn_prev}
+              onClick={() => swiper.slidePrev()}
+            >
+              <i className="fa-light fa-chevron-left"></i>
+            </button>
+            <button
+              className={styles.btn_next}
+              onClick={() => swiper.slideNext()}
+            >
+              <i className="fa-light fa-chevron-right"></i>
+            </button>
           </Swiper>
-          {/* <button onClick={() => swiper.slidePrev()}>prev</button>
-          <button onClick={() => swiper.slideNext()}>next</button> */}
         </div>
         <div className={"col-6" + " " + styles.info}>
           <div className={styles.top}>

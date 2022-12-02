@@ -465,7 +465,10 @@ button {
     position: relative;
   }
   .swiper-pagination {
-    bottom: -100px;
+    bottom: -125px;
+  }
+  .swiper-pagination-bullet-active {
+    border: 2px solid #000;
   }
 }
 #ProShopDetail {
