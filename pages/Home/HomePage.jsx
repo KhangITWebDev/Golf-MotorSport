@@ -34,7 +34,7 @@ function HomePage(props) {
               />
               <div className={styles.top_content}>
                 <span>Golf</span>
-                <button onClick={() => router.push("/golf")}>More</button>
+                <button onClick={() => router.push("/academy")}>More</button>
               </div>
             </div>
             <div className={"col-md-6 col-12" + " " + styles.top_item}>
