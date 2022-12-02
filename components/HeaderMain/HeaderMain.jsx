@@ -64,6 +64,15 @@ export default function HeaderMain(props) {
                 </Dropdown.Toggle>
               </Dropdown>
               <Dropdown>
+                <Dropdown.Toggle
+                  variant="default"
+                  id="dropdown-cafe"
+                  onClick={() => router.push("/proshop")}
+                >
+                  Proshop
+                </Dropdown.Toggle>
+              </Dropdown>
+              <Dropdown>
                 <Dropdown.Toggle variant="default" id="dropdown-cafe">
                   <i className="fal fa-search"></i>
                 </Dropdown.Toggle>

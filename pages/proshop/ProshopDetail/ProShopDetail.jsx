@@ -17,7 +17,15 @@ function ProShopDetail(props) {
   const [quantity, setQuantity] = useState(1);
   const [swiper, setSwiper] = React.useState(null);
   useEffect(() => {
-    console.log($(".swiper-pagination-bullet"));
+    $(".swiper-pagination-bullet").css({
+      backgroundImage: "url(/images/Academy/AcademyDetail/proshop1.png)",
+      width: 70,
+      height: 70,
+      borderRadius: 0,
+      backgroundPosition: "center",
+      backgroundSize: "contain",
+      opacity: 1,
+    });
   }, []);
   return (
     <div className={styles.proshop_detail}>
