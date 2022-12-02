@@ -5,9 +5,9 @@ import GoftNews from "./GoftNews";
 
 function Index(props) {
   return (
-    <AcademyLayout>
+    <GoftLayout>
       <GoftNews />
-    </AcademyLayout>
+    </GoftLayout>
   );
 }
 

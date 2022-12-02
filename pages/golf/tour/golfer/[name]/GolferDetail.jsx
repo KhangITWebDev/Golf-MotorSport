@@ -16,7 +16,7 @@ function GolferDetail(props) {
     (x) => removeAccents(x.firstname + "-" + x.lastname) === name
   );
   return (
-    <div className={styles.golfer_detail}>
+    <div className={styles.golfer_detail + " " + "container"}>
       <div className="heading">
         <h2>Golfers</h2>
         <div className="line" style={{ width: "70%" }}></div>
