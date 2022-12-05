@@ -12,25 +12,36 @@ import styles from "./ProShopDetail.module.scss";
 import $ from "jquery";
 import { Tab, Tabs } from "react-bootstrap";
 import TabDescription from "./TabDescription/TabDescription";
+const slideList = [
+  {
+    id: 1,
+    image: "/images/Academy/AcademyDetail/proshop1.png",
+  },
+  {
+    id: 2,
+    image: "/images/Academy/AcademyDetail/proshop2.png",
+  },
+  {
+    id: 2,
+    image: "/images/Academy/AcademyDetail/proshop3.png",
+  },
+];
 
 function ProShopDetail(props) {
   const [quantity, setQuantity] = useState(1);
   const [swiper, setSwiper] = React.useState(null);
   useEffect(() => {
-    $(".swiper-pagination-bullet").each(function (index) {
-      $(this).css({
-        backgroundImage:
-          index === 0
-            ? "url(/images/Academy/AcademyDetail/proshop1.png)"
-            : index === 1
-            ? "url(/images/Academy/AcademyDetail/proshop2.png)"
-            : "url(/images/Academy/AcademyDetail/proshop3.png)",
-        width: 100,
-        height: 100,
-        borderRadius: 0,
-        backgroundPosition: "center",
-        backgroundSize: "contain",
-        opacity: 1,
+    slideList.map((item, index) => {
+      $(".swiper-pagination-bullet").each(function (indexC) {
+        $(this).css({
+          backgroundImage: indexC === index && `url(${slideList[index].image})`,
+          width: 100,
+          height: 100,
+          borderRadius: 0,
+          backgroundPosition: "center",
+          backgroundSize: "contain",
+          opacity: 1,
+        });
       });
     });
   }, []);
@@ -55,33 +66,13 @@ function ProShopDetail(props) {
               setSwiper(s);
             }}
           >
-            <SwiperSlide>
-              <div className={styles.image}>
-                <Image
-                  alt={"Image"}
-                  src="/images/Academy/AcademyDetail/proshop1.png"
-                  layout="fill"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className={styles.image}>
-                <Image
-                  alt={"Image"}
-                  src="/images/Academy/AcademyDetail/proshop2.png"
-                  layout="fill"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className={styles.image}>
-                <Image
-                  alt={"Image"}
-                  src="/images/Academy/AcademyDetail/proshop3.png"
-                  layout="fill"
-                />
-              </div>
-            </SwiperSlide>
+            {slideList.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div className={styles.image}>
+                  <Image alt={"Image"} src={item.image} layout="fill" />
+                </div>
+              </SwiperSlide>
+            ))}
             <button
               className={styles.btn_prev}
               onClick={() => swiper.slidePrev()}

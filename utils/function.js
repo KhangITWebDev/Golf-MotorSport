@@ -31,6 +31,20 @@ export const convertDate = (date) => {
     "Nov",
     "Dec",
   ];
+  const MonthFull = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   const w = weekday[new Date(date).getDay()];
   const d =
     new Date(date).getDate() < 10
@@ -50,11 +64,17 @@ export const convertDate = (date) => {
   const dateWithWeek = w + "," + " " + d + "/" + m + "/" + y;
   const dateNoWeek = d + "/" + m + "/" + y;
   const getDateInDate = new Date(date).getDate();
+  const getDateInDateString =
+    new Date(date).getDate() < 10
+      ? "0" + new Date(date).getDate()
+      : new Date(date).getDate();
   const getFullYearInDate = new Date(date).getFullYear();
   const getMonthInDate = ArrayMonth[Number(new Date(date).getMonth())];
+  const getMonthFullInDate = MonthFull[Number(new Date(date).getMonth())];
   const getDateAndMonthInDate = `${getDateInDate} ${getMonthInDate}`;
   const getFullInDate = `${getDateInDate} ${getMonthInDate} ${y}`;
   const getTimeInDate = `${h}:${mi}`;
+  const getDateWithMonthFull = `${w}, ${getMonthFullInDate} ${getDateInDateString}`;
   return {
     dateNoWeek,
     dateWithWeek,
@@ -64,6 +84,7 @@ export const convertDate = (date) => {
     getFullInDate,
     getTimeInDate,
     getFullYearInDate,
+    getDateWithMonthFull,
   };
 };
 export const getDateArray = function (start, end) {

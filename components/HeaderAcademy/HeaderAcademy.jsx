@@ -66,7 +66,7 @@ function HeaderAcademy(props) {
                 <Dropdown.Toggle
                   variant="default"
                   id="dropdown-cafe"
-                  onClick={commingSoon}
+                  onClick={() => router.push("/booking")}
                 >
                   Booking
                 </Dropdown.Toggle>

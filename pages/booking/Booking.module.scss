@@ -1,0 +1,104 @@
+.booking_page {
+  .content {
+    width: 90%;
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+    }
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.8;
+      text-align: justify;
+      margin-top: 24px;
+    }
+    .form {
+      border-bottom: 2px solid #cecece;
+      margin-bottom: 50px;
+      margin-top: 60px;
+      width: 95% !important;
+      input {
+        padding: 6px 0px 6px 30px;
+        border: none;
+        font-size: 16px;
+        font-weight: 400;
+        color: #0b2b20b2;
+      }
+      button {
+        border: none;
+        background: transparent;
+        padding-right: 30px;
+        i {
+          color: #bc0707;
+          font-size: 20px;
+        }
+      }
+    }
+    .button {
+      width: 95%;
+      border: 2px solid #0b2b20;
+      background: #0b2b20;
+      color: #fff;
+      text-transform: uppercase;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      &:hover {
+        color: #0b2b20;
+        background: transparent;
+      }
+    }
+  }
+  .banner {
+    position: relative;
+    height: 600px;
+  }
+  .time {
+    padding-top: 40px;
+    &_content {
+      background: #ffffff;
+      box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.05);
+      margin-top: 50px;
+      margin-bottom: 95px;
+      padding-top: 15px;
+      padding-right: 20px;
+      padding-bottom: 100px;
+    }
+    .header {
+      padding-top: 25px;
+      padding-bottom: 15px;
+      padding-left: 20px;
+      margin-left: 20px;
+      font-size: 16px;
+      font-weight: 400;
+      border-bottom: 2px solid #cbcbcb;
+    }
+    .select_time {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 15px;
+      margin-top: 50px !important;
+      .item {
+        border: 2px solid #cbcbcb;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 10px;
+        i {
+          font-size: 16px;
+          margin-right: 15px;
+        }
+        span {
+          font-weight: 400;
+          font-size: 15px;
+        }
+      }
+    }
+    button {
+      margin-top: 20px;
+      padding: 5px 15px !important;
+    }
+  }
+}
