@@ -38,9 +38,10 @@ function SignIn(props) {
     if (findIndexEmail >= 0 && findPhone) {
       let timerInterval;
       Swal.fire({
-        title: "Great",
-        html: "Go to login page! Plase await <span></span>s",
-        timer: 3000,
+        icon: "success",
+        title: "Success",
+        html: "Login success! Plase await <span></span>s",
+        timer: 2000,
         timerProgressBar: true,
         didOpen: () => {
           Swal.showLoading();
