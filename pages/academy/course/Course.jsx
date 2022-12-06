@@ -2,7 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { LocationData } from "../../../utils/DataDemo/Academy/dataAcademyPage";
+import {
+  CourseData,
+  LocationData,
+} from "../../../utils/DataDemo/Academy/dataAcademyPage";
 import styles from "./Course.module.scss";
 
 function Course(props) {
@@ -16,16 +19,18 @@ function Course(props) {
           src="/images/Academy/Course/banner.png"
         />
         <div className={styles.content}>
-          <h2>COURSE GOLF</h2>
-          <button onClick={() => router.push("/golf/sign-up")}>Sign Up</button>
+          <h2>KHOÁ HỌC GOLF</h2>
+          <button onClick={() => router.push("/academy/sign-up")}>
+            ĐĂNG KÝ
+          </button>
         </div>
       </div>
       <div className={styles.golf_options + " " + "container"}>
         <div className={styles.header}>
-          <h5>GOLF OPTIONS OF MORE THAN 6000 STUDENTS</h5>
+          <h5>HỌC GOLF BÀI BẢN CÙNG CHUYÊN GIA</h5>
           <p>
-            Are you looking for a quality and professional golf learning
-            place?The GOLF course at LIO Golf Academy will help you with that!!
+            Dù bạn là người mới bắt đầu tìm hiểu, hay người chơi Golf muốn nâng
+            cao trình độ. The Golf House luôn có lộ trình phù hợp cho bạn!
           </p>
         </div>
         <div className={styles.list}>
@@ -53,25 +58,35 @@ function Course(props) {
         </div>
         <div className={styles.desc}>
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry{"'"}s standard dummy
-            text ever since the 1500s, when an unknown printer took a galley of
-            type and scrambled it to make a type specimen book. It has survived
-            not only five centuries, but also the leap into electronic
-            typesetting, remaining essentially unchanged. It was popularised in
-            the 1960s with the release of Letraset sheets containing Lorem Ipsum
-            passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.
-            <br />
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry{"'"}s standard dummy
-            text ever since the 1500s, when an unknown printer took a galley of
-            type and scrambled it to make a type specimen book. It has survived
-            not only five centuries, but also the leap into electronic
-            typesetting, remaining essentially unchanged. It was popularised in
-            the 1960s with the release of Letraset sheets containing Lorem Ipsum
-            passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.
+            Học viện The Golf House Việt Nam (TGH) được thành lập vào tháng 3
+            năm 2022 với sứ mệnh mang lại giá trị cho những người đam mê Golf và
+            xây dựng cộng đồng Golfer Việt Nam. TGH cung cấp chương trình giảng
+            dạy bài bản theo tiêu chuẩn PGA, đa dạng các gói học phục vụ nhu cầu
+            của học viên theo từng giai đoạn, dù là người mới chơi hay người
+            chơi golf muốn nâng cao kỹ năng của mình.Sau khóa học, học viên tự
+            tin bước ra sân khi được trang bị đầy đủ các yếu tố về kỹ thuật, văn
+            hóa golf và luật chơi.Trang thiết bị hiện đại ứng dụng công nghệ
+            tiến tiến như hệ thống Sky track, máy phân tích kỹ thuật Dr.Swing
+            phân tích từng động tác với thông số chính xác, phục vụ việc rèn
+            luyện kỹ thuật trong nhà với sự hướng dẫn tận tình của huấn luyện
+            viên quốc tế giàu kinh nghiệm giảng dạy và chơi GolfTGH hợp tác với
+            hệ thống sân golf và resort trải rộng trên cả nước, cung cấp những
+            buổi ra sân thực tế với nhiều dạng địa hình sân, nâng cao thực chiến
+            và sự tự tin của học viên. Không chỉ đào tạo chuyên môn, TGH chú
+            trọng phát triển cộng đồng khi trở thành đối tác chiến lược của các
+            Hiệp hội Golf tại Việt Nam, phối hợp đăng cai tổ chức các Giải đấu
+            như HUBA Golf của Hiệp hội Doanh nhân TP Hồ Chí Minh, Giải Best of
+            the Best,...Tại The Golf House, việc kiến tạo môi trường giúp việc
+            học tập và chơi golf trở nên đơn giản và hiệu quả nhất luôn là ưu
+            tiên hàng đầu của chúng tôi. TGH tập trung xây dựng chuỗi các dịch
+            vụ đa dạng bao gồm Học viện - Pro shop - Hair, Nail & Spa - Golf 3D
+            - VIP Lounge trong cùng một địa điểm. Giúp người học và chơi Golf
+            tận dụng thời gian dành cho môn thể thao mình yêu thích một cách tối
+            ưu nhất: vừa nâng cao kỹ năng golf, vừa thư giãn, vừa giao lưu với
+            những người chung niềm đam mê.Với khẩu hiệu “Working on a new you”,
+            The Golf House Việt Nam hỗ trợ học viên - những người yêu Golf trở
+            thành phiên bản tốt hơn của bản thân với lối sống tích cực và năng
+            động.
           </p>
         </div>
         <div className={styles.button + " " + "d-flex justify-content-center"}>
@@ -117,26 +132,54 @@ function Course(props) {
           </button>
         </div>
       </div>
-      <div className={styles.fee + " " + "container"}>
-        <div className="heading">
-          <h2>Pricing</h2>
-          <div className="line" style={{ width: "100%" }}></div>
-        </div>
-        <div className={styles.fee_list}>
-          <Image
-            alt="Fee"
-            layout="fill"
-            src="/images/Academy/Course/fee.png"
-          ></Image>
-        </div>
-        <div className={styles.button + " " + "d-flex justify-content-center"}>
-          <button>More</button>
+      <div className={styles.fee}>
+        <div className="container">
+          <h2 className="text-white text-center fw-bold">THÔNG TIN KHOÁ HỌC</h2>
+          <p className="text-white">
+            TGH cung cấp chương trình giảng dạy bài bản theo tiêu chuẩn PGA, đa
+            dạng các gói học phục vụ nhu cầu của học viên theo từng giai đoạn,
+            dù là người mới chơi hay người chơi golf muốn nâng cao kỹ năng của
+            mình. <br /> Sau khóa học, học viên tự tin bước ra sân khi được
+            trang bị đầy đủ các yếu tố về kỹ thuật, văn hóa golf và luật chơi.
+          </p>
+          <div className="d-flex justify-content-center">
+            <button>Nhận báo giá</button>
+          </div>
+          <div className={"d-flex flex-wrap" + " " + styles.list}>
+            {CourseData.map((item, index) => (
+              <div key={index} className={"col-6 d-flex" + " " + styles.item}>
+                <div className={"col-6" + " " + styles.info}>
+                  <span
+                    style={{
+                      background:
+                        item.cate === "Khoá người lớn"
+                          ? "#0b2b20"
+                          : item.cate === "Khoá trẻ em"
+                          ? "#F8AB0C"
+                          : "#C22300",
+                    }}
+                  >
+                    {item.cate}
+                  </span>
+                  <h3>{item.title}</h3>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: item.desc }}
+                    className={styles.desc}
+                  ></div>
+                  <button>Đăng ký ngay</button>
+                </div>
+                <div className={"col-6" + " " + styles.image}>
+                  <Image alt={item.title} src={item.image} layout="fill" />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className={styles.location + " " + "container"}>
         <div className="heading">
-          <h2>Location</h2>
-          <div className="line" style={{ width: "80%" }}></div>
+          <h2>VỊ TRÍ</h2>
+          <div className="line" style={{ width: "100%" }}></div>
         </div>
         <div className={styles.location_list}>
           {LocationData.map((item, index) => (
@@ -147,16 +190,16 @@ function Course(props) {
               <Link href="/">
                 <a className={styles.title}>{item.title}</a>
               </Link>
-              <p
+              <div
                 className={styles.subTitle}
                 dangerouslySetInnerHTML={{ __html: item.subTitle }}
-              ></p>
+              ></div>
               <div
                 className={
                   styles.button + " " + "d-flex justify-content-center"
                 }
               >
-                <button>Location</button>
+                <button>Vị trí</button>
               </div>
             </div>
           ))}
@@ -164,8 +207,8 @@ function Course(props) {
       </div>
       <div className={styles.coach + " " + "container"}>
         <div className="heading">
-          <h2>COACH</h2>
-          <div className="line" style={{ width: "80%" }}></div>
+          <h2>ĐỘI NGŨ HUẤN LUYỆN</h2>
+          <div className="line" style={{ width: "25%" }}></div>
         </div>
         <div className={styles.coach_top}>
           <div className={styles.content}>
@@ -251,19 +294,19 @@ function Course(props) {
       </div>
       <div className={styles.contact + " " + "container"}>
         <div className="heading">
-          <h2>CONTACT</h2>
+          <h2>LIÊN HỆ</h2>
           <div className="line" style={{ width: "80%" }}></div>
         </div>
         <div className={"col-6 m-auto" + " " + styles.form}>
           <form action="">
-            <input type="text" placeholder="Name" />
-            <input type="text" placeholder="Phone" />
+            <input type="text" placeholder="Họ tên" />
+            <input type="text" placeholder="Số điện thoại" />
             <input type="text" placeholder="Email" />
-            <textarea type="" placeholder="Note" />
+            <textarea type="" placeholder="Ghi chú" />
             <div
               className={styles.button + " " + "d-flex justify-content-center"}
             >
-              <button>Send</button>
+              <button>Gửi</button>
             </div>
           </form>
         </div>

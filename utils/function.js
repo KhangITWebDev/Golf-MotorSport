@@ -60,7 +60,10 @@ export const convertDate = (date) => {
     new Date(date).getMinutes() < 10
       ? "0" + new Date(date).getMinutes()
       : new Date(date).getMinutes();
-  const s = new Date(date).getSeconds();
+  const s =
+    new Date(date).getSeconds() < 10
+      ? "0" + new Date(date).getSeconds()
+      : new Date(date).getSeconds();
   const dateWithWeek = w + "," + " " + d + "/" + m + "/" + y;
   const dateNoWeek = d + "/" + m + "/" + y;
   const getDateInDate = new Date(date).getDate();
@@ -73,8 +76,10 @@ export const convertDate = (date) => {
   const getMonthFullInDate = MonthFull[Number(new Date(date).getMonth())];
   const getDateAndMonthInDate = `${getDateInDate} ${getMonthInDate}`;
   const getFullInDate = `${getDateInDate} ${getMonthInDate} ${y}`;
+  const getFullInDateLongMonth = `${getDateInDate} ${getMonthFullInDate} ${y}`;
   const getTimeInDate = `${h}:${mi}`;
   const getDateWithMonthFull = `${w}, ${getMonthFullInDate} ${getDateInDateString}`;
+  const getDateFullWithWeek = `${w}, ${h}:${mi}:${s}, ${getDateInDate} ${getMonthFullInDate}, ${y}`;
   return {
     dateNoWeek,
     dateWithWeek,
@@ -85,6 +90,7 @@ export const convertDate = (date) => {
     getTimeInDate,
     getFullYearInDate,
     getDateWithMonthFull,
+    getDateFullWithWeek,
   };
 };
 export const getDateArray = function (start, end) {

@@ -541,12 +541,16 @@ button {
       border: none;
     }
   }
+  .react-datepicker__navigation {
+    margin-top: 0px;
+  }
   .react-datepicker__navigation-icon {
     &::before {
       width: 12px;
       height: 12px;
-      top: -3px;
+      top: -4px;
       border-width: 2px 2px 0px 0px;
+      border-color: #000;
     }
   }
 
@@ -597,5 +601,15 @@ button {
     &:last-child {
       border-right: 2px solid #c9c9c9;
     }
+  }
+}
+#Sign-Up,
+#SignIn,
+#Booking {
+  .alert-danger {
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 10px;
   }
 }
