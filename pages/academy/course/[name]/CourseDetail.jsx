@@ -3,10 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { Accordion } from "react-bootstrap";
-import {
-  CourseDetailFeautureData,
-  FeeData,
-} from "../../../../utils/DataDemo/Academy/dataAcademyPage";
+import { CourseDetailFeautureData } from "../../../../utils/DataDemo/Academy/dataAcademyPage";
 import styles from "./CourseDetail.module.scss";
 
 function CourseDetail(props) {
@@ -223,7 +220,7 @@ function CourseDetail(props) {
           </div>
         </div>
       </div>
-      <div className={styles.fee}>
+      {/* <div className={styles.fee}>
         <div className="heading">
           <h2>Fee</h2>
           <div className="line" style={{ width: "100%" }}></div>
@@ -257,7 +254,7 @@ function CourseDetail(props) {
         <div className={styles.button + " " + "d-flex justify-content-center"}>
           <button>More</button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

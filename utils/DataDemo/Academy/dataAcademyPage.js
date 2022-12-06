@@ -4,6 +4,26 @@ export const CoachData = [
     name: "",
   },
 ];
+export const FeeData = [
+  {
+    id: 1,
+    image: "/images/Academy/Course/location1.png",
+    title: "LIO HOLDINGS",
+    subTitle: "<p>Add: 85-87 Nguyen Co Thach, An Loi Đong, Q.2, TPHCM</p>",
+  },
+  {
+    id: 2,
+    image: "/images/Academy/Course/location2.png",
+    title: "LIO HOLDINGS",
+    subTitle: "<p>Add: 85-87 Nguyen Co Thach, An Loi Đong, Q.2, TPHCM",
+  },
+  {
+    id: 3,
+    image: "/images/Academy/Course/location3.png",
+    title: "LIO HOLDINGS",
+    subTitle: "Add: 85-87 Nguyen Co Thach, An Loi Đong, Q.2, TPHCM",
+  },
+];
 export const LocationData = [
   {
     id: 1,

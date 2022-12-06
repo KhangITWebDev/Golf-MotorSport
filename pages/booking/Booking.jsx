@@ -154,7 +154,7 @@ function Booking(props) {
       default:
         break;
     }
-  }, [step, content]);
+  }, [step, content, contentStep1, contentStep2]);
   return (
     <div className={styles.booking_page} id="Booking">
       {content}
