@@ -56,108 +56,93 @@ function Booking(props) {
       }
     });
   };
-  const contentStep1 = (
-    <div className="d-flex col-12">
-      <div className="col-6 d-flex align-items-center justify-content-center">
-        <div className={styles.content}>
-          <h1>BOOKING</h1>
-          <p>
-            Are you looking for a quality and professional golf learning
-            place?The GOLF course at LIO Golf Academy will help you with that!!
-          </p>
-          <div
-            className={
-              "d-flex w-100 justify-content-between" + " " + styles.form
-            }
-          >
-            <input
-              type="text"
-              placeholder="Enter the address you want to book"
-              className="w-100"
-              value={address}
-              onChange={(e) => setAddreess(e.target.value)}
-            />
-            <button>
-              <i className="fa-sharp fa-solid fa-location-dot"></i>
-            </button>
-          </div>
-          <button className={styles.button} onClick={() => setStep(2)}>
-            Search
-          </button>
-        </div>
-      </div>
-      <div className={"col-6" + " " + styles.banner}>
-        <Image
-          alt="Booking banner"
-          src="/images/Booking/bookingbanner.png"
-          layout="fill"
-        />
-      </div>
-    </div>
-  );
-  const contentStep2 = (
-    <div className="container">
-      <div className={styles.time}>
-        <div className="heading">
-          <h2>Time</h2>
-          <div className="line" style={{ width: "100%" }}></div>
-        </div>
-        <div className={"d-flex" + " " + styles.time_content}>
-          <div className={"col-8" + " " + styles.calendar}>
-            <DatePicker
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              monthsShown={2}
-              minDate={moment().toDate()}
-              shouldCloseOnSelect={false}
-              open={true}
-            />
-          </div>
-          <div className="col-4">
-            <div className={styles.header + " " + "text-center"}>
-              {selectedDate}
-            </div>
-            <div className={"col-6 m-auto" + " " + styles.select_time}>
-              {ListTime.map((item, index) => (
-                <div
-                  key={index}
-                  className={styles.item}
-                  onClick={() => setSelectedTime(index)}
-                  style={{
-                    borderColor: selectedTime === index && "#F8AB0C",
-                  }}
-                >
-                  <i className="fa-light fa-clock"></i>
-                  <span>{item.label}</span>
-                </div>
-              ))}
-            </div>
-            <div className="button d-flex justify-content-center">
-              <button onClick={ApplyBooking}>CONTINUE</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-  const [content, setContent] = useState(contentStep1);
-  useEffect(() => {
-    switch (step) {
-      case 1: {
-        setContent(contentStep1);
-        break;
-      }
-      case 2: {
-        setContent(contentStep2);
-        break;
-      }
-      default:
-        break;
-    }
-  }, [step, content, contentStep1, contentStep2]);
   return (
     <div className={styles.booking_page} id="Booking">
-      {content}
+      {step === 1 && (
+        <div className="d-flex col-12">
+          <div className="col-6 d-flex align-items-center justify-content-center">
+            <div className={styles.content}>
+              <h1>BOOKING</h1>
+              <p>
+                Are you looking for a quality and professional golf learning
+                place?The GOLF course at LIO Golf Academy will help you with
+                that!!
+              </p>
+              <div
+                className={
+                  "d-flex w-100 justify-content-between" + " " + styles.form
+                }
+              >
+                <input
+                  type="text"
+                  placeholder="Enter the address you want to book"
+                  className="w-100"
+                  value={address}
+                  onChange={(e) => setAddreess(e.target.value)}
+                />
+                <button>
+                  <i className="fa-sharp fa-solid fa-location-dot"></i>
+                </button>
+              </div>
+              <button className={styles.button} onClick={() => setStep(2)}>
+                Search
+              </button>
+            </div>
+          </div>
+          <div className={"col-6" + " " + styles.banner}>
+            <Image
+              alt="Booking banner"
+              src="/images/Booking/bookingbanner.png"
+              layout="fill"
+            />
+          </div>
+        </div>
+      )}
+      {step === 2 && (
+        <div className="container">
+          <div className={styles.time}>
+            <div className="heading">
+              <h2>Time</h2>
+              <div className="line" style={{ width: "100%" }}></div>
+            </div>
+            <div className={"d-flex" + " " + styles.time_content}>
+              <div className={"col-8" + " " + styles.calendar}>
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  monthsShown={2}
+                  minDate={moment().toDate()}
+                  shouldCloseOnSelect={false}
+                  open={true}
+                />
+              </div>
+              <div className="col-4">
+                <div className={styles.header + " " + "text-center"}>
+                  {selectedDate}
+                </div>
+                <div className={"col-6 m-auto" + " " + styles.select_time}>
+                  {ListTime.map((item, index) => (
+                    <div
+                      key={index}
+                      className={styles.item}
+                      onClick={() => setSelectedTime(index)}
+                      style={{
+                        borderColor: selectedTime === index && "#F8AB0C",
+                      }}
+                    >
+                      <i className="fa-light fa-clock"></i>
+                      <span>{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="button d-flex justify-content-center">
+                  <button onClick={ApplyBooking}>CONTINUE</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
