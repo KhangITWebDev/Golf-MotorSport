@@ -82,7 +82,7 @@ function HeaderAcademy(props) {
                 </Dropdown.Toggle>
               </Dropdown>
               <Dropdown
-                show={true}
+                show={show1}
                 onMouseEnter={() => setShow1(!show1)}
                 onMouseLeave={() => setShow1(false)}
               >
