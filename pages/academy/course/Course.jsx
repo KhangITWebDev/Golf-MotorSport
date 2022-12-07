@@ -19,10 +19,15 @@ function Course(props) {
           src="/images/Academy/Course/banner.png"
         />
         <div className={styles.content}>
-          <h2>KHOÁ HỌC GOLF</h2>
-          <button onClick={() => router.push("/academy/sign-up")}>
-            ĐĂNG KÝ
-          </button>
+          <div
+            className="container m-auto d-flex 
+          flex-column align-items-center"
+          >
+            <h2 className="text-center">KHOÁ HỌC GOLF</h2>
+            <button onClick={() => router.push("/academy/sign-up")}>
+              ĐĂNG KÝ
+            </button>
+          </div>
         </div>
       </div>
       <div className={styles.golf_options + " " + "container"}>
@@ -33,27 +38,37 @@ function Course(props) {
             cao trình độ. The Golf House luôn có lộ trình phù hợp cho bạn!
           </p>
         </div>
-        <div className={styles.list}>
-          <div className={styles.item}>
-            <Image
-              alt="Image"
-              src="/images/Academy/Course/options1.png"
-              layout="fill"
-            />
+        <div
+          className={
+            styles.list + " " + "d-flex flex-wrap justify-content-center"
+          }
+        >
+          <div className={"col-6 col-md-4" + " " + styles.item}>
+            <div className={styles.image}>
+              <Image
+                alt="Image"
+                src="/images/Academy/Course/options1.png"
+                layout="fill"
+              />
+            </div>
           </div>
-          <div className={styles.item}>
-            <Image
-              alt="Image"
-              src="/images/Academy/Course/options2.png"
-              layout="fill"
-            />
+          <div className={"col-6 col-md-4" + " " + styles.item}>
+            <div className={styles.image}>
+              <Image
+                alt="Image"
+                src="/images/Academy/Course/options2.png"
+                layout="fill"
+              />
+            </div>
           </div>
-          <div className={styles.item}>
-            <Image
-              alt="Image"
-              src="/images/Academy/Course/options3.png"
-              layout="fill"
-            />
+          <div className={"col-6 col-md-4" + " " + styles.item}>
+            <div className={styles.image}>
+              <Image
+                alt="Image"
+                src="/images/Academy/Course/options3.png"
+                layout="fill"
+              />
+            </div>
           </div>
         </div>
         <div className={styles.desc}>
@@ -89,7 +104,7 @@ function Course(props) {
             động.
           </p>
         </div>
-        <div className={styles.button + " " + "d-flex justify-content-center"}>
+        <div className="d-flex justify-content-center button">
           <button onClick={() => router.push("/academy/academy-detail")}>
             Detail
           </button>
@@ -123,7 +138,7 @@ function Course(props) {
             <span>10-15 students/class group</span>
           </div>
         </div>
-        <div className={styles.button + " " + "d-flex justify-content-center"}>
+        <div className="button d-flex justify-content-center">
           <button onClick={() => router.push("/academy/sign-up")}>
             Sign Up
           </button>
@@ -147,8 +162,14 @@ function Course(props) {
           </div>
           <div className={"d-flex flex-wrap" + " " + styles.list}>
             {CourseData.map((item, index) => (
-              <div key={index} className={"col-6 d-flex" + " " + styles.item}>
-                <div className={"col-6" + " " + styles.info}>
+              <div
+                key={index}
+                className={
+                  "col-12 col-lg-6 d-flex flex-wrap-reverse" + " " + styles.item
+                }
+              >
+                <div className={"col-12 col-sm-6" + " " + styles.info}>
+                  <hr />
                   <span
                     style={{
                       background:
@@ -168,7 +189,7 @@ function Course(props) {
                   ></div>
                   <button>Đăng ký ngay</button>
                 </div>
-                <div className={"col-6" + " " + styles.image}>
+                <div className={"col-12 col-sm-6" + " " + styles.image}>
                   <Image alt={item.title} src={item.image} layout="fill" />
                 </div>
               </div>
@@ -181,25 +202,32 @@ function Course(props) {
           <h2>VỊ TRÍ</h2>
           <div className="line" style={{ width: "100%" }}></div>
         </div>
-        <div className={styles.location_list}>
+        <div
+          className={
+            "d-flex flex-wrap justify-content-between justify-content-md-center" +
+            " " +
+            styles.list
+          }
+        >
           {LocationData.map((item, index) => (
-            <div className={styles.item} key={index}>
-              <div className={styles.image}>
-                <Image alt="Fee" src={item.image} layout="fill" />
-              </div>
-              <Link href="/">
-                <a className={styles.title}>{item.title}</a>
-              </Link>
-              <div
-                className={styles.subTitle}
-                dangerouslySetInnerHTML={{ __html: item.subTitle }}
-              ></div>
-              <div
-                className={
-                  styles.button + " " + "d-flex justify-content-center"
-                }
-              >
-                <button>Vị trí</button>
+            <div
+              className={"col-12 col-lg-4 col-md-6" + " " + styles.item}
+              key={index}
+            >
+              <div className={styles.info}>
+                <div className={styles.image}>
+                  <Image alt="Fee" src={item.image} layout="fill" />
+                </div>
+                <Link href="/">
+                  <a className={styles.title}>{item.title}</a>
+                </Link>
+                <div
+                  className={styles.subTitle}
+                  dangerouslySetInnerHTML={{ __html: item.subTitle }}
+                ></div>
+                <div className="button d-flex justify-content-center">
+                  <button>Vị trí</button>
+                </div>
               </div>
             </div>
           ))}
@@ -210,8 +238,14 @@ function Course(props) {
           <h2>ĐỘI NGŨ HUẤN LUYỆN</h2>
           <div className="line" style={{ width: "25%" }}></div>
         </div>
-        <div className={styles.coach_top}>
-          <div className={styles.content}>
+        <div
+          className={
+            "d-flex flex-wrap flex-column-reverse flex-lg-row" +
+            " " +
+            styles.top
+          }
+        >
+          <div className={"col-12 col-lg-8" + " " + styles.content}>
             <h3>
               TEAM OF PROFESSIONAL COACHES
               <br />
@@ -239,16 +273,24 @@ function Course(props) {
             </p>
             <p>+ Responsible for the quality of every course.</p>
           </div>
-          <div className={styles.image}>
-            <Image
-              alt="Coach"
-              src="/images/Academy/Course/coach.png"
-              layout="fill"
-            />
+          <div className="col-12 col-lg-4">
+            <div className={styles.image}>
+              <Image
+                alt="Coach"
+                src="/images/Academy/Course/coach.png"
+                layout="fill"
+              />
+            </div>
           </div>
         </div>
-        <div className={styles.coach_list}>
-          <div className={styles.item}>
+        <div
+          className={
+            styles.coach_list +
+            " " +
+            "d-flex flex-wrap justify-content-between justify-content-md-center"
+          }
+        >
+          <div className={styles.item + " " + "col-12 col-lg-4 col-md-6"}>
             <div className={styles.image}>
               <Image
                 alt="Coach"
@@ -262,7 +304,7 @@ function Course(props) {
               </a>
             </Link>
           </div>
-          <div className={styles.item}>
+          <div className={styles.item + " " + "col-12 col-lg-4 col-md-6"}>
             <div className={styles.image}>
               <Image
                 alt="Coach"
@@ -276,7 +318,7 @@ function Course(props) {
               </a>
             </Link>
           </div>
-          <div className={styles.item}>
+          <div className={styles.item + " " + "col-12 col-lg-4 col-md-6"}>
             <div className={styles.image}>
               <Image
                 alt="Coach"
@@ -297,15 +339,13 @@ function Course(props) {
           <h2>LIÊN HỆ</h2>
           <div className="line" style={{ width: "80%" }}></div>
         </div>
-        <div className={"col-6 m-auto" + " " + styles.form}>
+        <div className={"col-12 col-md-10 col-lg-6 m-auto" + " " + styles.form}>
           <form action="">
             <input type="text" placeholder="Họ tên" />
             <input type="text" placeholder="Số điện thoại" />
             <input type="text" placeholder="Email" />
             <textarea type="" placeholder="Ghi chú" />
-            <div
-              className={styles.button + " " + "d-flex justify-content-center"}
-            >
+            <div className="button d-flex justify-content-center">
               <button>Gửi</button>
             </div>
           </form>

@@ -99,17 +99,19 @@ function SignUp(props) {
       </div>
       <div
         className={
-          "m-auto col-8 d-flex justify-content-center" + " " + styles.content
+          "m-auto col-12 col-lg-8 d-flex flex-wrap justify-content-center" +
+          " " +
+          styles.content
         }
       >
-        <div className={"col-6" + " " + styles.image}>
+        <div className={"col-12 col-md-6" + " " + styles.image}>
           <Image
             alt="Image"
             src="/images/Academy/SignUp/img.png"
             layout="fill"
           />
         </div>
-        <div className={"col-6" + " " + styles.form}>
+        <div className={"col-12 col-md-6" + " " + styles.form}>
           <h5>Form</h5>
           <form action="" onSubmit={handleSubmit(onSubmit)}>
             <input type="text" placeholder="Name" {...register("name")} />
@@ -131,23 +133,7 @@ function SignUp(props) {
             {findIndexEmail >= 0 && (
               <Alert variant="danger">This email already exists</Alert>
             )}
-            {/* <div className={styles.list_checkBox}>
-              <div className={styles.item}>
-                <input type="checkbox" name="" id="" />
-                <span>85-87 Nguyen Co Thach, An Loi Đong, Q.2, TPHCM</span>
-              </div>
-              <div className={styles.item}>
-                <input type="checkbox" name="" id="" />
-                <span>Location 1</span>
-              </div>
-              <div className={styles.item}>
-                <input type="checkbox" name="" id="" />
-                <span>Location 2</span>
-              </div>
-            </div> */}
-            <div
-              className={styles.button + " " + "d-flex justify-content-center"}
-            >
+            <div className="button d-flex justify-content-center">
               <button>Sign Up</button>
             </div>
           </form>

@@ -19,6 +19,7 @@ function HeaderAcademy(props) {
   };
   const router = useRouter();
   const [show, setShow] = useState(false);
+  const [show1, setShow1] = useState(false);
   const showDropdown = (e) => {
     setShow(!show);
   };
@@ -80,10 +81,25 @@ function HeaderAcademy(props) {
                   News
                 </Dropdown.Toggle>
               </Dropdown>
-              <Dropdown>
+              <Dropdown
+                show={true}
+                onMouseEnter={() => setShow1(!show1)}
+                onMouseLeave={() => setShow1(false)}
+              >
                 <Dropdown.Toggle variant="default" id="dropdown-cafe">
                   <i className="fal fa-search"></i>
                 </Dropdown.Toggle>
+                <Dropdown.Menu
+                  aria-labelledby="dropdown-user"
+                  id="dropdown_end"
+                >
+                  <div className={"d-flex w-100" + " " + styles.box_search}>
+                    <input type="text" placeholder="Enter key word" />
+                    <button onClick={commingSoon}>
+                      <i className="fa-light fa-search"></i>
+                    </button>
+                  </div>
+                </Dropdown.Menu>
               </Dropdown>
               <Dropdown
                 show={show}

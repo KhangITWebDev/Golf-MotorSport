@@ -20,6 +20,7 @@ export default function HeaderMain(props) {
   };
   const router = useRouter();
   const [show, setShow] = useState(false);
+  const [show1, setShow1] = useState(false);
   const showDropdown = (e) => {
     setShow(!show);
   };
@@ -42,7 +43,16 @@ export default function HeaderMain(props) {
           >
             <Image alt="logo" src="/images/Logo/Logo11.png" layout="fill" />
           </div>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            className={styles.navToggle}
+          >
+            <i
+              className="fal fa-bars"
+              color="#fff"
+              style={{ fontSize: 28 }}
+            ></i>
+          </Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className={styles.header_menu}>
               <Dropdown>
@@ -72,10 +82,25 @@ export default function HeaderMain(props) {
                   Proshop
                 </Dropdown.Toggle>
               </Dropdown>
-              <Dropdown>
+              <Dropdown
+                show={show1}
+                onMouseEnter={() => setShow1(!show1)}
+                onMouseLeave={() => setShow1(false)}
+              >
                 <Dropdown.Toggle variant="default" id="dropdown-cafe">
                   <i className="fal fa-search"></i>
                 </Dropdown.Toggle>
+                <Dropdown.Menu
+                  aria-labelledby="dropdown-user"
+                  id="dropdown_end"
+                >
+                  <div className={"d-flex" + " " + styles.box_search}>
+                    <input type="text" placeholder="Enter key word" />
+                    <button onClick={commingSoon}>
+                      <i className="fa-light fa-search"></i>
+                    </button>
+                  </div>
+                </Dropdown.Menu>
               </Dropdown>
               <Dropdown
                 show={show}

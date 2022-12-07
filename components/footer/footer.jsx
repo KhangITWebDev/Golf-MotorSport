@@ -73,40 +73,32 @@ function Footer(props) {
           </Swiper>
         </div>
         <div
-          className={styles.menu_list + " " + "d-flex justify-content-between"}
+          className={
+            "d-flex justify-content-center flex-wrap" + " " + styles.menu_list
+          }
         >
-          <Link href="/">
-            <a className={styles.link}>Terms of Service</a>
-          </Link>
-          <Link href="/">
-            <a className={styles.link}>Privacy Policy</a>
-          </Link>
-          <Link href="/">
-            <a className={styles.link}>Accessibility Statement</a>
-          </Link>
-          <Link href="/">
-            <a className={styles.link}>Cookie Choices</a>
-          </Link>
-          <Link href="/">
-            <a className={styles.link}>Tournament Tickets</a>
-          </Link>
-          <Link href="/">
-            <a className={styles.link}>Careers</a>
-          </Link>
-          <Link href="/">
-            <a className={styles.link}>Contact Us</a>
-          </Link>
-          <Link href="/">
-            <a className={styles.link}>Sitemap</a>
-          </Link>
-          <Link href="/">
-            <a className={styles.link}>Media</a>
-          </Link>
+          <span>Terms of Service</span>
+          <span>Privacy Policy</span>
+          <span>Accessibility Statement</span>
+          <span>Cookie Choices</span>
+          <span>Tournament Tickets</span>
+          <span>Careers</span>
+          <span>Contact Us</span>
+          <span>Sitemap</span>
+          <span>Media</span>
         </div>
-        <p className={styles.copy_right}>
+        <p
+          className={styles.copy_right + " " + "d-flex justify-content-center"}
+        >
           © 2022 PGA TOUR, Inc | All Rights Reserved
         </p>
-        <p className={styles.footer_desc}>
+        <p
+          className={
+            "d-flex justify-content-center text-center text-white" +
+            " " +
+            styles.footer_desc
+          }
+        >
           PGA TOUR, PGA TOUR Champions, and the Swinging Golfer design are
           registered trademarks. The Korn Ferry trademark is also a registered
           trademark, and is used in the Korn Ferry Tour logo with permission.

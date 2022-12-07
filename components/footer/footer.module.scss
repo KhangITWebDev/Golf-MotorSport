@@ -22,27 +22,27 @@
         span {
           width: 80% !important;
           // height: 180px !important;
+          img {
+            object-fit: contain;
+          }
         }
       }
     }
   }
   .menu {
     &_list {
-      margin-top: 50px;
-      // @media screen and (min-width: 1280px) {
-      //   padding: 0 55px;
-      // }
-      // @media screen and (min-width: 1440px) {
-      //   padding: 0 72px;
-      // }
-      // @media screen and (max-width: 1279px) {
-      //   padding: 0 30px;
-      // }
-      .link {
+      margin-top: 20px;
+      @media screen and (max-width: 992px) {
+        justify-content: space-between !important;
+      }
+      span {
         color: #fff;
         font-size: 15px;
         font-weight: 500;
-        text-decoration: none;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-top: 20px;
+        cursor: pointer;
         &:hover {
           color: rgba(248, 171, 12, 1);
         }
@@ -65,6 +65,9 @@
     width: 700px;
     font-size: 15px;
     line-height: 1.8;
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
   }
   .social {
     margin-top: 30px;

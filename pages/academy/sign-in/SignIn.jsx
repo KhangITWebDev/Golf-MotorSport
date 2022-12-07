@@ -79,17 +79,19 @@ function SignIn(props) {
       </div>
       <div
         className={
-          "m-auto col-8 d-flex justify-content-center" + " " + styles.content
+          "m-auto col-12 col-lg-8 d-flex flex-wrap justify-content-center" +
+          " " +
+          styles.content
         }
       >
-        <div className={"col-6" + " " + styles.image}>
+        <div className={"col-12 col-md-6" + " " + styles.image}>
           <Image
             alt="Image"
             src="/images/Academy/SignIn/banner.png"
             layout="fill"
           />
         </div>
-        <div className={"col-6" + " " + styles.form}>
+        <div className={"col-12 col-md-6" + " " + styles.form}>
           <h5>Form</h5>
           <form action="" onSubmit={handleSubmit(onSubmit)}>
             <input type="text" placeholder="Email" {...register("email")} />
@@ -106,9 +108,7 @@ function SignIn(props) {
                 <span>Remember me</span>
               </div>
             </div>
-            <div
-              className={styles.button + " " + "d-flex justify-content-center"}
-            >
+            <div className="button d-flex justify-content-center">
               <button>Sign In</button>
             </div>
           </form>
