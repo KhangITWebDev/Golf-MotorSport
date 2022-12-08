@@ -80,6 +80,7 @@ export const convertDate = (date) => {
   const getTimeInDate = `${h}:${mi}`;
   const getDateWithMonthFull = `${w}, ${getMonthFullInDate} ${getDateInDateString}`;
   const getDateFullWithWeek = `${w}, ${h}:${mi}:${s}, ${getDateInDate} ${getMonthFullInDate}, ${y}`;
+  const getDateMonthYear = `${getDateInDate} ${getMonthFullInDate}, ${y}`;
   return {
     dateNoWeek,
     dateWithWeek,
@@ -91,6 +92,8 @@ export const convertDate = (date) => {
     getFullYearInDate,
     getDateWithMonthFull,
     getDateFullWithWeek,
+    w,
+    getDateMonthYear,
   };
 };
 export const getDateArray = function (start, end) {

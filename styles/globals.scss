@@ -269,9 +269,11 @@ button {
     .dropdown-item:hover {
       background-color: #f8ab0c;
       color: #fff;
+      text-decoration: none;
       .dropdown-toggle {
         background-color: #f8ab0c;
         color: #fff !important;
+        text-decoration: none;
       }
     }
   }
@@ -325,9 +327,11 @@ button {
     .dropdown-item:hover {
       background-color: #f8ab0c;
       color: #fff;
+      text-decoration: none;
       .dropdown-toggle {
         background-color: #f8ab0c;
         color: #fff !important;
+        text-decoration: none;
       }
     }
   }
@@ -341,8 +345,9 @@ button {
   h2 {
     font-size: 32px;
     font-weight: 700;
-    line-height: 1;
+    line-height: 1.2;
     text-transform: uppercase;
+    padding-bottom: 5px;
   }
   .line {
     width: 40%;
@@ -615,6 +620,9 @@ button {
       border-right: 2px solid #c9c9c9;
     }
   }
+  .rs-steps-item-icon-finish {
+    color: var(--rs-progress-bar-success);
+  }
 }
 #Sign-Up,
 #SignIn,
@@ -624,5 +632,39 @@ button {
     font-size: 12px;
     font-weight: 500;
     margin-top: 10px;
+  }
+  .rs-steps-horizontal {
+    padding: 50px 0px;
+  }
+}
+.custom-timeline {
+  margin-top: 45px !important;
+  .rs-timeline-item-custom-dot {
+    position: absolute;
+    background: #fff;
+    top: 0;
+    left: -2px;
+    border: 2px solid;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 14px !important;
+    color: #000;
+    margin-left: -13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+  }
+  .rs-timeline-item-tail {
+    background-color: #000;
+  }
+  .rs-timeline-item-content p {
+    margin: 0;
+  }
+  .rs-timeline-item-content {
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
   }
 }

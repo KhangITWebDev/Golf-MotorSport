@@ -3,6 +3,7 @@ import Script from "next/script";
 import "../styles/globals.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-datepicker/dist/react-datepicker.css";
+import "rsuite/dist/rsuite.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";

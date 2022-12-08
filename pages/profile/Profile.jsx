@@ -1,6 +1,12 @@
 import Image from "next/image";
 import React from "react";
 import styles from "./Profile.module.scss";
+import { Timeline } from "rsuite";
+import CreditCardIcon from "@rsuite/icons/legacy/CreditCard";
+import PlaneIcon from "@rsuite/icons/legacy/Plane";
+import TruckIcon from "@rsuite/icons/legacy/Truck";
+import UserIcon from "@rsuite/icons/legacy/User";
+import CheckIcon from "@rsuite/icons/legacy/Check";
 
 function Profile(props) {
   return (
@@ -15,7 +21,7 @@ function Profile(props) {
             }}
           ></div>
         </div>
-        <div className="m-auto col-6">
+        <div className="m-auto col-12 col-md-6">
           <div className={styles.information}>
             <div className={styles.image}>
               <Image
@@ -106,25 +112,24 @@ function Profile(props) {
               }}
             ></div>
           </div>
-          <div className={styles.content}>
-            <ul className={"m-auto col-10" + " " + styles.tree}>
-              <li>
-                <i className="fa-solid fa-circle-small"></i>
-                <div className={"d-flex flex-column" + " " + styles.tree_label}>
-                  <h5>GENERAL DIRECTOR</h5>
-                  <span>FOSTECH</span>
-                  <span>2020-2021</span>
-                </div>
-              </li>
-              <li>
-                <i className="fa-solid fa-circle-small"></i>
-                <div className={"d-flex flex-column" + " " + styles.tree_label}>
-                  <h5>CHIEF FINANCE OFFICER</h5>
-                  <span>LIO HOLDINGS</span>
-                  <span>2021- Present</span>
-                </div>
-              </li>
-            </ul>
+          <div className="container">
+            <div className="col-12 col-sm-9 m-auto">
+              <div className={styles.content}>
+                <Timeline className="custom-timeline">
+                  <Timeline.Item dot={<i className="fa-solid fa-circle"></i>}>
+                    <h5>GENERAL DIRECTOR</h5>
+                    <span>FOSTECH</span>
+                    <span>2020-2021</span>
+                  </Timeline.Item>
+
+                  <Timeline.Item dot={<i className="fa-solid fa-circle"></i>}>
+                    <h5>CHIEF FINANCE OFFICER</h5>
+                    <span>LIO HOLDINGS</span>
+                    <span>2021- Present</span>
+                  </Timeline.Item>
+                </Timeline>
+              </div>
+            </div>
           </div>
         </div>
         <div className={styles.profile}>
@@ -145,32 +150,32 @@ function Profile(props) {
           </div>
           <div className={styles.content}>
             <div className={"d-flex" + " " + styles.bg1}>
-              <h6 className="col-2">Experience</h6>
-              <p className="col-10">7 years</p>
+              <h6 className="col-6 col-md-3 col-lg-2">Experience</h6>
+              <p className="col-6 col-md-9 col-lg-10">7 years</p>
             </div>
             <div className={"d-flex" + " " + styles.bg2}>
-              <h6 className="col-2">Introduce</h6>
-              <p className="col-10">
+              <h6 className="col-6 col-md-3 col-lg-2">Introduce</h6>
+              <p className="col-6 col-md-9 col-lg-10">
                 -Design Web App <br />
                 -App E-commerce <br />
                 -Namecard
               </p>
             </div>
             <div className={"d-flex" + " " + styles.bg1}>
-              <h6 className="col-2">Marital status</h6>
-              <p className="col-10">Single</p>
+              <h6 className="col-6 col-md-3 col-lg-2">Marital status</h6>
+              <p className="col-6 col-md-9 col-lg-10">Single</p>
             </div>
             <div className={"d-flex" + " " + styles.bg2}>
-              <h6 className="col-2">Hobby</h6>
-              <p className="col-10">Travel, shopping,..</p>
+              <h6 className="col-6 col-md-3 col-lg-2">Hobby</h6>
+              <p className="col-6 col-md-9 col-lg-10">Travel, shopping,..</p>
             </div>
             <div className={"d-flex" + " " + styles.bg1}>
-              <h6 className="col-2">Address</h6>
-              <p className="col-10">Ho Chi Minh</p>
+              <h6 className="col-6 col-md-3 col-lg-2">Address</h6>
+              <p className="col-6 col-md-9 col-lg-10">Ho Chi Minh</p>
             </div>
             <div className={"d-flex" + " " + styles.bg2}>
-              <h6 className="col-2">Target</h6>
-              <p className="col-10">
+              <h6 className="col-6 col-md-3 col-lg-2">Target</h6>
+              <p className="col-6 col-md-9 col-lg-10">
                 - It is a long established fact that a reader will be distracted
                 by the readable content of a page when looking at its layout.
                 The point of using Lorem Ipsum is that it has a more-or-less
@@ -254,59 +259,65 @@ function Profile(props) {
             ></div>
           </div>
           <div className={styles.content}>
-            <div className={styles.list}>
-              <div className={styles.item}>
-                <div className={styles.image}>
-                  <Image
-                    alt="gains"
-                    src="/images/Profile/gain1.png"
-                    layout="fill"
-                  />
-                </div>
-                <div className={styles.info}>
-                  <h5>Goals</h5>
-                  <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Modi minima in, fugit laboriosam nam suscipit itaque
-                    consequatur dolores magnam culpa earum perferendis ut
-                    temporibus? Praesentium laborum ipsa molestiae et commodi!
-                  </p>
-                </div>
-              </div>
-              <div className={styles.item}>
-                <div className={styles.image}>
-                  <Image
-                    alt="gains"
-                    src="/images/Profile/gain2.png"
-                    layout="fill"
-                  />
-                </div>
-                <div className={styles.info}>
-                  <h5>Accomplishments</h5>
-                  <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Modi minima in, fugit laboriosam nam suscipit itaque
-                    consequatur dolores magnam culpa earum perferendis ut
-                    temporibus? Praesentium laborum ipsa molestiae et commodi!
-                  </p>
+            <div className={styles.list + " " + "d-flex flex-wrap"}>
+              <div className={"col-12 col-md-6 col-lg-4" + " " + styles.wrap}>
+                <div className={styles.item}>
+                  <div className={styles.image}>
+                    <Image
+                      alt="gains"
+                      src="/images/Profile/gain1.png"
+                      layout="fill"
+                    />
+                  </div>
+                  <div className={styles.info}>
+                    <h5>Goals</h5>
+                    <p>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Modi minima in, fugit laboriosam nam suscipit itaque
+                      consequatur dolores magnam culpa earum perferendis ut
+                      temporibus? Praesentium laborum ipsa molestiae et commodi!
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className={styles.item}>
-                <div className={styles.image}>
-                  <Image
-                    alt="gains"
-                    src="/images/Profile/gain3.png"
-                    layout="fill"
-                  />
+              <div className={"col-12 col-md-6 col-lg-4" + " " + styles.wrap}>
+                <div className={styles.item}>
+                  <div className={styles.image}>
+                    <Image
+                      alt="gains"
+                      src="/images/Profile/gain2.png"
+                      layout="fill"
+                    />
+                  </div>
+                  <div className={styles.info}>
+                    <h5>Accomplishments</h5>
+                    <p>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Modi minima in, fugit laboriosam nam suscipit itaque
+                      consequatur dolores magnam culpa earum perferendis ut
+                      temporibus? Praesentium laborum ipsa molestiae et commodi!
+                    </p>
+                  </div>
                 </div>
-                <div className={styles.info}>
-                  <h5>Network</h5>
-                  <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Modi minima in, fugit laboriosam nam suscipit itaque
-                    consequatur dolores magnam culpa earum perferendis ut
-                    temporibus? Praesentium laborum ipsa molestiae et commodi!
-                  </p>
+              </div>
+              <div className={"col-12 col-md-6 col-lg-4" + " " + styles.wrap}>
+                <div className={styles.item}>
+                  <div className={styles.image}>
+                    <Image
+                      alt="gains"
+                      src="/images/Profile/gain3.png"
+                      layout="fill"
+                    />
+                  </div>
+                  <div className={styles.info}>
+                    <h5>Network</h5>
+                    <p>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Modi minima in, fugit laboriosam nam suscipit itaque
+                      consequatur dolores magnam culpa earum perferendis ut
+                      temporibus? Praesentium laborum ipsa molestiae et commodi!
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

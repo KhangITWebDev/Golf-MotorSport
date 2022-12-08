@@ -9,6 +9,23 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Alert } from "react-bootstrap";
+import { Steps } from "rsuite";
+import { useRouter } from "next/router";
+
+const PHONE_REGEX = /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/i;
+const schema = yup.object().shape({
+  name: yup.string().required("Name is required"),
+  phone: yup
+    .string()
+    .required("Phone is required")
+    .min(10, "Phone must be at more 9 characters")
+    .max(12, "Phone must be at least 12 characters")
+    .matches(PHONE_REGEX, "This phone is not valid"),
+  email: yup
+    .string()
+    .email("This email is not valid")
+    .required("Email is required"),
+});
 
 const ListTime = [
   {
@@ -30,28 +47,6 @@ const ListTime = [
 ];
 
 function Booking(props) {
-  const [address, setAddreess] = useState(
-    "85-87 Nguyen Co Thach, An Loi Đong, Q.2, TPHCM"
-  );
-  const [startDate, setStartDate] = useState(new Date());
-  const selectedDate = convertDate(startDate).getDateWithMonthFull;
-  const [selectedTime, setSelectedTime] = useState(0);
-  const [step, setStep] = useState(1);
-  const PHONE_REGEX =
-    /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/i;
-  const schema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    phone: yup
-      .string()
-      .required("Phone is required")
-      .min(10, "Phone must be at more 9 characters")
-      .max(12, "Phone must be at least 12 characters")
-      .matches(PHONE_REGEX, "This phone is not valid"),
-    email: yup
-      .string()
-      .email("This email is not valid")
-      .required("Email is required"),
-  });
   const {
     register,
     handleSubmit,
@@ -61,12 +56,41 @@ function Booking(props) {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  const {
+    register: register2,
+    handleSubmit: handleSubmit2,
+    watch: watch2,
+    reset: reset2,
+    formState: { errors: errors2 },
+  } = useForm();
+  const router = useRouter();
+  const [startDate, setStartDate] = useState(new Date());
+  const selectedDate = convertDate(startDate).getDateWithMonthFull;
+  const [selectedTime, setSelectedTime] = useState(0);
+  const [step, setStep] = useState(0);
+  const [status, setStatus] = useState("success");
+  const onChange = (nextStep) => {
+    setStep(nextStep < 0 ? 0 : nextStep > 3 ? 3 : nextStep);
+  };
+  const onNext = () => onChange(step + 1);
+  const onPrevious = () => onChange(step - 1);
   const onSubmit = (data) => {
-    setStep(4);
+    onNext();
+  };
+  const onSubmit2 = (data) => {
+    onNext();
   };
   return (
     <div className={styles.booking_page} id="Booking">
-      {step === 1 && (
+      <div className="container">
+        <Steps current={step} currentStatus={status}>
+          <Steps.Item title={step === 0 ? "Address" : "Success"} />
+          <Steps.Item title={step <= 1 ? "Date & Time" : "Success"} />
+          <Steps.Item title={step <= 2 ? "Confirmation" : "Success"} />
+          <Steps.Item title={step <= 3 ? "Check Information" : "Sucess"} />
+        </Steps>
+      </div>
+      {step === 0 && (
         <div className="d-flex col-12">
           <div className="col-6 d-flex align-items-center justify-content-center">
             <div className={styles.content}>
@@ -76,25 +100,33 @@ function Booking(props) {
                 place?The GOLF course at LIO Golf Academy will help you with
                 that!!
               </p>
-              <div
-                className={
-                  "d-flex w-100 justify-content-between" + " " + styles.form
-                }
-              >
-                <input
-                  type="text"
-                  placeholder="Enter the address you want to book"
-                  className="w-100"
-                  value={address}
-                  onChange={(e) => setAddreess(e.target.value)}
-                />
-                <button>
-                  <i className="fa-sharp fa-solid fa-location-dot"></i>
-                </button>
-              </div>
-              <button className={styles.button} onClick={() => setStep(2)}>
-                Search
-              </button>
+              <form onSubmit={handleSubmit2(onSubmit2)}>
+                <div className={styles.form}>
+                  <div
+                    className={
+                      "d-flex w-100 justify-content-between" +
+                      " " +
+                      styles.input
+                    }
+                  >
+                    <input
+                      type="text"
+                      placeholder="Enter the address you want to book"
+                      className="w-100"
+                      {...register2("address", { required: true })}
+                    />
+                    <button>
+                      <i className="fa-sharp fa-solid fa-location-dot"></i>
+                    </button>
+                  </div>
+                  {errors2?.address && (
+                    <Alert variant="danger">
+                      Plase enter address you want booking
+                    </Alert>
+                  )}
+                </div>
+                <button className={styles.button}>Search</button>
+              </form>
             </div>
           </div>
           <div className={"col-6" + " " + styles.banner}>
@@ -106,7 +138,7 @@ function Booking(props) {
           </div>
         </div>
       )}
-      {step === 2 && (
+      {step === 1 && (
         <div className="container">
           <div className={styles.time}>
             <div className="heading">
@@ -151,7 +183,7 @@ function Booking(props) {
           </div>
         </div>
       )}
-      {step === 3 && (
+      {step === 2 && (
         <div className="container">
           <div className={styles.confirm}>
             <div className="heading">
@@ -173,20 +205,6 @@ function Booking(props) {
                 {errors?.email && (
                   <Alert variant="danger">{errors?.email?.message}</Alert>
                 )}
-                {/* <div className={styles.list_checkBox}>
-              <div className={styles.item}>
-                <input type="checkbox" name="" id="" />
-                <span>85-87 Nguyen Co Thach, An Loi Đong, Q.2, TPHCM</span>
-              </div>
-              <div className={styles.item}>
-                <input type="checkbox" name="" id="" />
-                <span>Location 1</span>
-              </div>
-              <div className={styles.item}>
-                <input type="checkbox" name="" id="" />
-                <span>Location 2</span>
-              </div>
-            </div> */}
                 <div className="button d-flex justify-content-center">
                   <button>Submit</button>
                 </div>
@@ -195,7 +213,7 @@ function Booking(props) {
           </div>
         </div>
       )}
-      {step === 4 && (
+      {step === 3 && (
         <div className="container m-auto">
           <div className={styles.info}>
             <div className="heading">
@@ -231,9 +249,13 @@ function Booking(props) {
                   >
                     <h6>LIO Academy</h6>
                     <h6>{watch("name")}</h6>
-                    <h6>{convertDate(new Date()).getDateFullWithWeek} </h6>
+                    <h6>
+                      {`${convertDate(startDate).w}, ${
+                        ListTime[selectedTime].label
+                      }, ${convertDate(startDate).getDateMonthYear}`}
+                    </h6>
                     <h6>Vietnam</h6>
-                    <h6>{address}</h6>
+                    <h6>{watch2("address")}</h6>
                     <h6>
                       Name: {watch("name")} <br />
                       Phone: {watch("phone")} <br />
@@ -241,8 +263,33 @@ function Booking(props) {
                     </h6>
                   </div>
                 </div>
+                <div className="button d-flex justify-content-center">
+                  <button onClick={() => setStep(step + 1)}>
+                    Confirm Booking
+                  </button>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+      {step === 4 && (
+        <div
+          className={
+            "container d-flex justify-content-center" +
+            " " +
+            styles.booking_tool
+          }
+        >
+          <div className={styles.btn_continute}>
+            <button onClick={() => router.push("/academy")}>
+              <i className="fa-light fa-arrow-left"></i> Back to course
+            </button>
+          </div>
+          <div className={styles.btn_check_order}>
+            <button>
+              Check Booking Order <i className="fa-light fa-arrow-right"></i>
+            </button>
           </div>
         </div>
       )}
