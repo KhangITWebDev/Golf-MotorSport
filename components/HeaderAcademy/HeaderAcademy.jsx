@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 import { Container, Dropdown, Nav, Navbar } from "react-bootstrap";
+import DropdownUser from "../DropdownUser/dropdownUser";
 
 function HeaderAcademy(props) {
   const commingSoon = (e) => {
@@ -19,13 +20,6 @@ function HeaderAcademy(props) {
   };
   const router = useRouter();
   const [show, setShow] = useState(false);
-  const [show1, setShow1] = useState(false);
-  const showDropdown = (e) => {
-    setShow(!show);
-  };
-  const hideDropdown = (e) => {
-    setShow(false);
-  };
   return (
     <div>
       <Navbar
@@ -82,9 +76,9 @@ function HeaderAcademy(props) {
                 </Dropdown.Toggle>
               </Dropdown>
               <Dropdown
-                show={show1}
-                onMouseEnter={() => setShow1(!show1)}
-                onMouseLeave={() => setShow1(false)}
+                show={show}
+                onMouseEnter={() => setShow(!show)}
+                onMouseLeave={() => setShow(false)}
               >
                 <Dropdown.Toggle variant="default" id="dropdown-cafe">
                   <i className="fal fa-search"></i>
@@ -101,38 +95,7 @@ function HeaderAcademy(props) {
                   </div>
                 </Dropdown.Menu>
               </Dropdown>
-              <Dropdown
-                show={show}
-                onMouseEnter={showDropdown}
-                onMouseLeave={hideDropdown}
-              >
-                <Dropdown.Toggle variant="default" id="dropdown-user">
-                  <i className="fal fa-user-alt"></i>
-                </Dropdown.Toggle>
-                <Dropdown.Menu
-                  aria-labelledby="dropdown-user"
-                  id="dropdown_end"
-                >
-                  <Dropdown.Item
-                    href="#"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      router.push("/academy/sign-up");
-                    }}
-                  >
-                    Sign Up
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    href="#"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      router.push("/academy/sign-in");
-                    }}
-                  >
-                    Sign In
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+              <DropdownUser />
             </Nav>
           </Navbar.Collapse>
         </Container>

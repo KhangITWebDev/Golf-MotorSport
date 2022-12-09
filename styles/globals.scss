@@ -240,12 +240,23 @@ button {
       margin: 0;
       padding-top: var(--bs-dropdown-spacer);
     }
-    .dropdown-item {
+    .dropdown-item,
+    .top {
       border-radius: 8px;
       padding: 6px 15px;
       margin-top: 5px;
       font-size: 14px;
       font-weight: 500;
+    }
+    .top {
+      font-weight: 600;
+      border-bottom: 1px solid;
+      border-radius: 0;
+      padding-bottom: 15px;
+      span {
+        font-weight: 400;
+        color: #000;
+      }
     }
     .dropdown-toggle {
       font-weight: 600;
@@ -298,12 +309,23 @@ button {
       margin: 0;
       padding-top: var(--bs-dropdown-spacer);
     }
-    .dropdown-item {
+    .dropdown-item,
+    .top {
       border-radius: 8px;
       padding: 6px 15px;
       margin-top: 5px;
       font-size: 14px;
       font-weight: 500;
+    }
+    .top {
+      font-weight: 600;
+      border-bottom: 1px solid;
+      border-radius: 0;
+      padding-bottom: 15px;
+      span {
+        font-weight: 400;
+        color: #000;
+      }
     }
     .dropdown-toggle {
       font-weight: 600;
@@ -624,9 +646,56 @@ button {
     color: var(--rs-progress-bar-success);
   }
 }
+.rs-modal {
+  form {
+    input[type="text"] {
+      width: 100%;
+      background: rgba(217, 217, 217, 0.3);
+      border: 0;
+      border-radius: 8px;
+      padding: 10px 15px;
+      margin-top: 22px;
+      color: #000;
+    }
+  }
+  .rs-custom-button {
+    margin-top: 30px;
+    button {
+      color: #fff;
+      padding: 4px 25px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 8px;
+      text-transform: uppercase;
+      @media screen and (max-width: 576px) {
+        width: 49%;
+        padding: 4px 15px;
+      }
+      &:nth-child(1) {
+        background-color: #0b2b20;
+        border: 2px solid #0b2b20;
+        margin-right: 5px;
+        &:hover {
+          color: #0b2b20;
+          background-color: transparent;
+        }
+      }
+      &:nth-child(2) {
+        background-color: #ba2525;
+        border: 2px solid #ba2525;
+        margin-left: 5px;
+        &:hover {
+          color: #ba2525;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
 #Sign-Up,
 #SignIn,
-#Booking {
+#Booking,
+.rs-modal {
   .alert-danger {
     padding: 5px 15px;
     font-size: 12px;

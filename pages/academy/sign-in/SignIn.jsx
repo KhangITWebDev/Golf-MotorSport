@@ -12,6 +12,12 @@ import {
   setLocalStorage,
 } from "../../../utils/handleStorage";
 import styles from "./SignIn.module.scss";
+import Cookies from "js-cookie";
+import { Button, Loader, Modal } from "rsuite";
+import SignedIn from "../signed-in/SignedIn";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsersData } from "../../../store/redux/DemoReducer/demo.action";
+import { useEffect } from "react";
 
 function SignIn(props) {
   const router = useRouter();
@@ -31,7 +37,12 @@ function SignIn(props) {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const listUser = getLocalStorage(LOCAL_STORAGE.USERS);
+  const dispatch = useDispatch();
+  const listUser = useSelector((state) => state.DemoReducer.usersList) || [];
+  useEffect(() => {
+    dispatch(getUsersData());
+  }, [dispatch]);
+  const userLogin = JSON.parse(Cookies.get(LOCAL_STORAGE.USER_LOGIN) || "{}");
   const findIndexEmail = listUser.findIndex((x) => x.email === watch("email"));
   const findPhone = listUser[findIndexEmail]?.phone === watch("phone");
   const onSubmit = (data) => {
@@ -52,8 +63,8 @@ function SignIn(props) {
         },
         willClose: () => {
           clearInterval(timerInterval);
-          setLocalStorage(LOCAL_STORAGE.USER_LOGIN, data);
-          router.push("/profile");
+          Cookies.set("user-login", JSON.stringify(data));
+          router.back();
         },
       });
       reset({
@@ -71,7 +82,9 @@ function SignIn(props) {
       });
     }
   };
-  return (
+  return userLogin.email && userLogin.phone ? (
+    <SignedIn />
+  ) : (
     <div className={styles.sign_up_page + " " + "container"} id="SignIn">
       <div className="heading">
         <h2>Sign In</h2>
@@ -102,12 +115,7 @@ function SignIn(props) {
             {errors?.phone && (
               <Alert variant="danger">{errors?.phone?.message}</Alert>
             )}
-            <div className={styles.list_checkBox}>
-              <div className={styles.item}>
-                <input type="checkbox" name="" id="" />
-                <span>Remember me</span>
-              </div>
-            </div>
+
             <div className="button d-flex justify-content-center">
               <button>Sign In</button>
             </div>

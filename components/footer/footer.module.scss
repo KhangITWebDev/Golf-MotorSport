@@ -35,6 +35,14 @@
       @media screen and (max-width: 992px) {
         justify-content: space-between !important;
       }
+      @media screen and (max-width: 576px) {
+        width: 80% !important;
+        margin: auto;
+        justify-content: start !important;
+      }
+      @media screen and (max-width: 480px) {
+        width: 100% !important;
+      }
       span {
         color: #fff;
         font-size: 15px;
@@ -43,6 +51,9 @@
         padding-right: 15px;
         margin-top: 20px;
         cursor: pointer;
+        @media screen and (max-width: 576px) {
+          width: 50%;
+        }
         &:hover {
           color: rgba(248, 171, 12, 1);
         }

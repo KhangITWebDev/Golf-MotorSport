@@ -408,8 +408,8 @@
       text-transform: uppercase;
       font-weight: 600;
       &:hover {
-        background: #fff;
-        color: #0b2b20;
+        background: transparent;
+        color: #f8ab0c;
       }
     }
     .list {
@@ -494,6 +494,9 @@
         margin-top: 15px !important;
         @media screen and (max-width: 767px) {
           width: 100%;
+        }
+        &:hover {
+          color: #f8ab0c;
         }
       }
     }

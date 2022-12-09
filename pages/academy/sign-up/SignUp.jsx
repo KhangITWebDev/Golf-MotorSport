@@ -12,6 +12,14 @@ import {
 } from "../../../utils/handleStorage";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
+import SignedIn from "../signed-in/SignedIn";
+import Cookies from "js-cookie";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getUsersData,
+  SignUpAsMember,
+} from "../../../store/redux/DemoReducer/demo.action";
+import { useEffect } from "react";
 
 function SignUp(props) {
   const router = useRouter();
@@ -39,17 +47,17 @@ function SignUp(props) {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const listUser = getLocalStorage(LOCAL_STORAGE.USERS);
+  const dispatch = useDispatch();
+  const listUser = useSelector((state) => state.DemoReducer.usersList) || [];
+  useEffect(() => {
+    dispatch(getUsersData());
+  }, [dispatch]);
+  const userLogin = JSON.parse(Cookies.get(LOCAL_STORAGE.USER_LOGIN) || "{}");
   const findIndexEmail = listUser.findIndex((x) => x.email === watch("email"));
   const findIndexPhone = listUser.findIndex((x) => x.phone === watch("phone"));
   const onSubmit = (data) => {
     if (findIndexEmail < 0 && findIndexPhone < 0) {
-      if (listUser) {
-        listUser.push(data);
-        setLocalStorage(LOCAL_STORAGE.USERS, listUser);
-      } else {
-        setLocalStorage(LOCAL_STORAGE.USERS, data);
-      }
+      dispatch(SignUpAsMember(data));
       Swal.fire({
         title: "Sign Up Success",
         icon: "success",
@@ -91,7 +99,9 @@ function SignUp(props) {
       });
     }
   };
-  return (
+  return userLogin.email && userLogin.phone ? (
+    <SignedIn />
+  ) : (
     <div className={styles.sign_up_page + " " + "container"} id="Sign-Up">
       <div className="heading">
         <h2>Sign Up</h2>

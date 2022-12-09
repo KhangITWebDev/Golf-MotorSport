@@ -2,14 +2,87 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import { Alert } from "react-bootstrap";
+import { Button, Loader, Modal, Placeholder } from "rsuite";
 import {
   CourseData,
   LocationData,
 } from "../../../utils/DataDemo/Academy/dataAcademyPage";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import styles from "./Course.module.scss";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import { getLocalStorage, LOCAL_STORAGE } from "../../../utils/handleStorage";
+import Cookies from "js-cookie";
 
 function Course(props) {
   const router = useRouter();
+  const [open, setOpen] = React.useState(false);
+  const [rows, setRows] = React.useState(0);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const schema = yup.object().shape({
+    email: yup
+      .string()
+      .email("This email is not valid")
+      .required("Email is required"),
+    phone: yup.string().required("Password is required"),
+  });
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const listUser = getLocalStorage(LOCAL_STORAGE.USERS);
+  const findIndexEmail = listUser.findIndex((x) => x.email === watch("email"));
+  const findPhone = listUser[findIndexEmail]?.phone === watch("phone");
+  const onSubmit = (data) => {
+    if (findIndexEmail >= 0 && findPhone) {
+      let timerInterval;
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        html: "Login success! Plase await <span></span>s",
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading();
+          const b = Swal.getHtmlContainer().querySelector("span");
+          timerInterval = setInterval(() => {
+            b.textContent = Math.floor(Swal.getTimerLeft() / 1000);
+          }, 100);
+        },
+        willClose: () => {
+          clearInterval(timerInterval);
+          Cookies.set("user-login", JSON.stringify(data));
+          router.push("/pricing");
+        },
+      });
+      reset({
+        email: "",
+        phone: "",
+      });
+    } else {
+      Swal.fire({
+        title: "Fail",
+        icon: "error",
+        text: "Plase check your email or phone",
+        focusConfirm: false,
+        confirmButtonColor: "#0B2B20",
+        confirmButtonText: "Ok",
+      });
+    }
+  };
+  const userLogin = JSON.parse(Cookies.get(LOCAL_STORAGE.USER_LOGIN) || "{}");
+  const handleEntered = () => {
+    setTimeout(() => setRows(80), 2000);
+  };
   return (
     <div className={styles.course_page}>
       <div className={[styles.banner, styles.full].join(" ")}>
@@ -158,8 +231,60 @@ function Course(props) {
             trang bị đầy đủ các yếu tố về kỹ thuật, văn hóa golf và luật chơi.
           </p>
           <div className="d-flex justify-content-center">
-            <button>Nhận báo giá</button>
+            <button
+              onClick={
+                userLogin.email && userLogin.phone
+                  ? router.push("/pricing")
+                  : handleOpen
+              }
+            >
+              Nhận báo giá
+            </button>
           </div>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            onEntered={handleEntered}
+            onExited={() => {
+              setRows(0);
+            }}
+          >
+            <Modal.Header>
+              <Modal.Title>Login Form</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {rows ? (
+                <>
+                  <form action="" onSubmit={handleSubmit(onSubmit)}>
+                    <input
+                      type="text"
+                      placeholder="Email"
+                      {...register("email")}
+                    />
+                    {errors?.email && (
+                      <Alert variant="danger">{errors?.email?.message}</Alert>
+                    )}
+                    <input
+                      type="text"
+                      placeholder="Phone"
+                      {...register("phone")}
+                    />
+                    {errors?.phone && (
+                      <Alert variant="danger">{errors?.phone?.message}</Alert>
+                    )}
+                  </form>
+                  <div className="rs-custom-button d-flex justify-content-end">
+                    <button onClick={handleSubmit(onSubmit)}>Sign In</button>
+                    <button onClick={handleClose}>Cancle</button>
+                  </div>
+                </>
+              ) : (
+                <div style={{ textAlign: "center" }}>
+                  <Loader size="md" />
+                </div>
+              )}
+            </Modal.Body>
+          </Modal>
           <div className={"d-flex flex-wrap" + " " + styles.list}>
             {CourseData.map((item, index) => (
               <div
