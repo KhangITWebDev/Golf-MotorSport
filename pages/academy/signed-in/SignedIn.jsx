@@ -30,7 +30,7 @@ function SignedIn(props) {
         Swal.fire({
           title: "Success",
           icon: "success",
-          title: "Logout success",
+          title: "Sign out success",
           showConfirmButton: false,
           timer: 1000,
           willClose: () => {
@@ -69,7 +69,7 @@ function SignedIn(props) {
                   >
                     View Profile
                   </Button>
-                  <Button onClick={onLogout}>Logout</Button>
+                  <Button onClick={onLogout}>sign out</Button>
                 </div>
               </>
             ) : (

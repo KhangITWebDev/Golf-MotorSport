@@ -20,6 +20,7 @@ import {
   SignUpAsMember,
 } from "../../../store/redux/DemoReducer/demo.action";
 import { useEffect } from "react";
+import Link from "next/link";
 
 function SignUp(props) {
   const router = useRouter();
@@ -54,10 +55,16 @@ function SignUp(props) {
   }, [dispatch]);
   const userLogin = JSON.parse(Cookies.get(LOCAL_STORAGE.USER_LOGIN) || "{}");
   const findIndexEmail = listUser.findIndex((x) => x.email === watch("email"));
-  const findIndexPhone = listUser.findIndex((x) => x.phone === watch("phone"));
+  const formatPhone =
+    watch("phone")?.length > 0 && watch("phone")?.indexOf("84") === 0
+      ? watch("phone")?.replace("84", "0")
+      : watch("phone")?.indexOf("+84") === 0
+      ? watch("phone")?.replace("+84", "0")
+      : watch("phone");
+  const findIndexPhone = listUser.findIndex((x) => x.phone === formatPhone);
   const onSubmit = (data) => {
     if (findIndexEmail < 0 && findIndexPhone < 0) {
-      dispatch(SignUpAsMember(data));
+      dispatch(SignUpAsMember({ ...data, phone: formatPhone }));
       Swal.fire({
         title: "Sign Up Success",
         icon: "success",
@@ -75,7 +82,7 @@ function SignUp(props) {
           let timerInterval;
           Swal.fire({
             title: "Great",
-            html: "Go to login page! Plase await <span></span>s",
+            html: "Go to sign in page! Plase await <span></span>s",
             timer: 3000,
             timerProgressBar: true,
             didOpen: () => {
@@ -144,9 +151,20 @@ function SignUp(props) {
               <Alert variant="danger">This email already exists</Alert>
             )}
             <div className="button d-flex justify-content-center">
-              <button>Sign Up</button>
+              <button className="">Sign Up</button>
             </div>
           </form>
+          <div
+            style={{
+              marginTop: 30,
+              textAlign: "center",
+            }}
+          >
+            <p>
+              Do you already have an account?{" "}
+              <Link href="/academy/sign-in">Sign In</Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>

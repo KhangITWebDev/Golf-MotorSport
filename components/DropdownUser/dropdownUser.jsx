@@ -36,7 +36,7 @@ function DropdownUser(props) {
         Swal.fire({
           title: "Success",
           icon: "success",
-          title: "Logout success",
+          title: "Sign out success",
           showConfirmButton: false,
           timer: 1000,
           willClose: () => {
@@ -140,7 +140,7 @@ function DropdownUser(props) {
               onLogout();
             }}
           >
-            LOGOUT
+            SIGN OUT
           </Dropdown.Item>
         </Dropdown.Menu>
       )}

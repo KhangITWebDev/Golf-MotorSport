@@ -18,6 +18,7 @@ import SignedIn from "../signed-in/SignedIn";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsersData } from "../../../store/redux/DemoReducer/demo.action";
 import { useEffect } from "react";
+import Link from "next/link";
 
 function SignIn(props) {
   const router = useRouter();
@@ -44,7 +45,13 @@ function SignIn(props) {
   }, [dispatch]);
   const userLogin = JSON.parse(Cookies.get(LOCAL_STORAGE.USER_LOGIN) || "{}");
   const findIndexEmail = listUser.findIndex((x) => x.email === watch("email"));
-  const findPhone = listUser[findIndexEmail]?.phone === watch("phone");
+  const formatPhone =
+    watch("phone")?.length > 0 && watch("phone")?.indexOf("84") === 0
+      ? watch("phone")?.replace("84", "0")
+      : watch("phone")?.indexOf("+84") === 0
+      ? watch("phone")?.replace("+84", "0")
+      : watch("phone");
+  const findPhone = listUser[findIndexEmail]?.phone === formatPhone;
   const onSubmit = (data) => {
     if (findIndexEmail >= 0 && findPhone) {
       let timerInterval;
@@ -115,11 +122,29 @@ function SignIn(props) {
             {errors?.phone && (
               <Alert variant="danger">{errors?.phone?.message}</Alert>
             )}
-
+            <div
+              className="d-flex justify-content-end"
+              style={{
+                marginTop: 20,
+              }}
+            >
+              <p>Forgot Password</p>
+            </div>
             <div className="button d-flex justify-content-center">
               <button>Sign In</button>
             </div>
           </form>
+          <div
+            style={{
+              marginTop: 30,
+              textAlign: "center",
+            }}
+          >
+            <p>
+              Don{"'"}t you already have an account?{" "}
+              <Link href="/academy/sign-up">Sign Up</Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>

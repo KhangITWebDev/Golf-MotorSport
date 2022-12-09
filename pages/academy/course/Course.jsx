@@ -15,13 +15,14 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { getLocalStorage, LOCAL_STORAGE } from "../../../utils/handleStorage";
 import Cookies from "js-cookie";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getUsersData } from "../../../store/redux/DemoReducer/demo.action";
 
 function Course(props) {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const [rows, setRows] = React.useState(0);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
   const schema = yup.object().shape({
     email: yup
       .string()
@@ -39,9 +40,19 @@ function Course(props) {
     resolver: yupResolver(schema),
   });
 
-  const listUser = getLocalStorage(LOCAL_STORAGE.USERS);
+  const dispatch = useDispatch();
+  const listUser = useSelector((state) => state.DemoReducer.usersList) || [];
+  useEffect(() => {
+    dispatch(getUsersData());
+  }, [dispatch]);
   const findIndexEmail = listUser.findIndex((x) => x.email === watch("email"));
-  const findPhone = listUser[findIndexEmail]?.phone === watch("phone");
+  const formatPhone =
+    watch("phone")?.length > 0 && watch("phone")?.indexOf("84") === 0
+      ? watch("phone")?.replace("84", "0")
+      : watch("phone")?.indexOf("+84") === 0
+      ? watch("phone")?.replace("+84", "0")
+      : watch("phone");
+  const findPhone = listUser[findIndexEmail]?.phone === formatPhone;
   const onSubmit = (data) => {
     if (findIndexEmail >= 0 && findPhone) {
       let timerInterval;
@@ -83,6 +94,14 @@ function Course(props) {
   const handleEntered = () => {
     setTimeout(() => setRows(80), 2000);
   };
+  const handleOpen = () => {
+    if (userLogin.email && userLogin.phone) {
+      router.push("/pricing");
+    } else {
+      setOpen(true);
+    }
+  };
+  const handleClose = () => setOpen(false);
   return (
     <div className={styles.course_page}>
       <div className={[styles.banner, styles.full].join(" ")}>
@@ -231,15 +250,7 @@ function Course(props) {
             trang bị đầy đủ các yếu tố về kỹ thuật, văn hóa golf và luật chơi.
           </p>
           <div className="d-flex justify-content-center">
-            <button
-              onClick={
-                userLogin.email && userLogin.phone
-                  ? router.push("/pricing")
-                  : handleOpen
-              }
-            >
-              Nhận báo giá
-            </button>
+            <button onClick={handleOpen}>Nhận báo giá</button>
           </div>
           <Modal
             open={open}
