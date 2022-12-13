@@ -480,7 +480,7 @@ function Course(props) {
             <input type="text" placeholder="Họ tên" />
             <input type="text" placeholder="Số điện thoại" />
             <input type="text" placeholder="Email" />
-            <textarea type="" placeholder="Ghi chú" />
+            <textarea type="" rows={5} placeholder="Ghi chú" />
             <div className="button d-flex justify-content-center">
               <button>Gửi</button>
             </div>

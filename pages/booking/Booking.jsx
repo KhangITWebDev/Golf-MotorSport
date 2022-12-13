@@ -11,287 +11,266 @@ import * as yup from "yup";
 import { Alert } from "react-bootstrap";
 import { Steps } from "rsuite";
 import { useRouter } from "next/router";
+import Select, { components } from "react-select";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFlip, Navigation, Pagination } from "swiper";
+import StartBooking from "./StartBooking";
+const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    fontSize: 14,
+    color: state.isSelected ? "#fff" : "#000",
+    cursor: "pointer",
+  }),
+  singleValue: (provided, state) => ({
+    ...provided,
+    color: "#fff",
+    fontSize: 20,
+    fontWeight: 700,
+  }),
+  dropdownIndicator: (base) => ({
+    ...base,
+    color: "#ECECEC",
+  }),
+  indicatorSeparator: () => ({ display: "none" }),
+  container: (provided, state) => ({
+    ...provided,
+    width: "100%",
+  }),
+  input: (base, state) => ({
+    ...base,
+    color: "#fff",
+    fontSize: 20,
+    fontWeight: 700,
+  }),
+  control: (base, state) => ({
+    ...base,
+    backgroundColor: "tranparent",
+    cursor: "pointer",
+    color: "#fff",
+    border: state.isFocused ? 0 : 0,
+    boxShadow: state.isFocused ? 0 : 0,
+    "&:hover": {
+      border: state.isFocused ? 0 : 0,
+    },
+  }),
+};
 
-const PHONE_REGEX = /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/i;
-const schema = yup.object().shape({
-  name: yup.string().required("Name is required"),
-  phone: yup
-    .string()
-    .required("Phone is required")
-    .min(10, "Phone must be at more 9 characters")
-    .max(12, "Phone must be at least 12 characters")
-    .matches(PHONE_REGEX, "This phone is not valid"),
-  email: yup
-    .string()
-    .email("This email is not valid")
-    .required("Email is required"),
-});
-
-const ListTime = [
-  {
-    value: 1,
-    label: "15:00",
-  },
-  {
-    value: 2,
-    label: "16:00",
-  },
-  {
-    value: 3,
-    label: "17:00",
-  },
-  {
-    value: 4,
-    label: "18:00",
-  },
+const options = [
+  { value: "1", label: "Nguyen Co Thach, An Loi Dong, District 2, HCMC" },
+  { value: "2", label: "Location 1" },
+  { value: "3", label: "Location 2" },
 ];
 
 function Booking(props) {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-  const {
-    register: register2,
-    handleSubmit: handleSubmit2,
-    watch: watch2,
-    reset: reset2,
-    formState: { errors: errors2 },
-  } = useForm();
-  const router = useRouter();
-  const [startDate, setStartDate] = useState(new Date());
-  const selectedDate = convertDate(startDate).getDateWithMonthFull;
-  const [selectedTime, setSelectedTime] = useState(0);
-  const [step, setStep] = useState(0);
-  const [status, setStatus] = useState("success");
-  const onChange = (nextStep) => {
-    setStep(nextStep < 0 ? 0 : nextStep > 3 ? 3 : nextStep);
+  const [swiper, setSwiper] = useState(null);
+  const [address, setAddress] = useState(options[0].label);
+  const [startBooking, setStartBooking] = React.useState(false);
+  const DropdownIndicator = (props) => {
+    return (
+      <components.DropdownIndicator {...props}>
+        <i
+          className="fa-solid fa-chevron-down"
+          style={{
+            fontSize: 24,
+            color: "white",
+          }}
+        ></i>
+      </components.DropdownIndicator>
+    );
   };
-  const onNext = () => onChange(step + 1);
-  const onPrevious = () => onChange(step - 1);
-  const onSubmit = (data) => {
-    onNext();
-  };
-  const onSubmit2 = (data) => {
-    onNext();
-  };
+  console.log(address);
   return (
     <div className={styles.booking_page} id="Booking">
-      <div className="container">
-        <Steps current={step} currentStatus={status}>
-          <Steps.Item title={step === 0 ? "Address" : "Success"} />
-          <Steps.Item title={step <= 1 ? "Date & Time" : "Success"} />
-          <Steps.Item title={step <= 2 ? "Confirmation" : "Success"} />
-          <Steps.Item title={step <= 3 ? "Check Information" : "Sucess"} />
-        </Steps>
-      </div>
-      {step === 0 && (
-        <div className="d-flex col-12">
-          <div className="col-6 d-flex align-items-center justify-content-center">
-            <div className={styles.content}>
-              <h1>BOOKING</h1>
-              <p>
-                Are you looking for a quality and professional golf learning
-                place?The GOLF course at LIO Golf Academy will help you with
-                that!!
-              </p>
-              <form onSubmit={handleSubmit2(onSubmit2)}>
-                <div className={styles.form}>
-                  <div
-                    className={
-                      "d-flex w-100 justify-content-between" +
-                      " " +
-                      styles.input
-                    }
-                  >
-                    <input
-                      type="text"
-                      placeholder="Enter the address you want to book"
-                      className="w-100"
-                      {...register2("address", { required: true })}
-                    />
-                    <button>
-                      <i className="fa-sharp fa-solid fa-location-dot"></i>
-                    </button>
-                  </div>
-                  {errors2?.address && (
-                    <Alert variant="danger">
-                      Plase enter address you want booking
-                    </Alert>
-                  )}
-                </div>
-                <button className={styles.button}>Search</button>
-              </form>
-            </div>
-          </div>
-          <div className={"col-6" + " " + styles.banner}>
+      {!startBooking ? (
+        <>
+          <div className={styles.banner}>
             <Image
               alt="Booking banner"
               src="/images/Booking/bookingbanner.png"
               layout="fill"
             />
-          </div>
-        </div>
-      )}
-      {step === 1 && (
-        <div className="container">
-          <div className={styles.time}>
-            <div className="heading">
-              <h2>Time</h2>
-              <div className="line" style={{ width: "100%" }}></div>
-            </div>
-            <div className={"d-flex" + " " + styles.time_content}>
-              <div className={"col-8" + " " + styles.calendar}>
-                <DatePicker
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  monthsShown={2}
-                  minDate={moment().toDate()}
-                  shouldCloseOnSelect={false}
-                  open={true}
-                />
-              </div>
-              <div className="col-4">
-                <div className={styles.header + " " + "text-center"}>
-                  {selectedDate}
-                </div>
-                <div className={"col-6 m-auto" + " " + styles.select_time}>
-                  {ListTime.map((item, index) => (
+            <div className={styles.content}>
+              <div className="container">
+                <div className="h-100 d-flex flex-column justify-content-between">
+                  <div>
+                    <h2 className="text-center">Booking</h2>
+                  </div>
+                  <div
+                    className={
+                      "d-flex col-10 justify-content-end align-items-center" +
+                      " " +
+                      styles.search
+                    }
+                  >
+                    <div className={"col-9" + " " + styles.select_location}>
+                      <span className={styles.title}>Location</span>
+                      <div className="d-flex align-items-center">
+                        <i className="fa-solid fa-location-dot"></i>
+                        <Select
+                          options={options}
+                          styles={customStyles}
+                          defaultValue={options[0]}
+                          components={{ DropdownIndicator }}
+                          onChange={(value) => setAddress(value.label)}
+                        />
+                      </div>
+                    </div>
                     <div
-                      key={index}
-                      className={styles.item}
-                      onClick={() => setSelectedTime(index)}
-                      style={{
-                        borderColor: selectedTime === index && "#F8AB0C",
+                      className={
+                        "col-3 d-flex justify-content-center" +
+                        " " +
+                        styles.tool
+                      }
+                    >
+                      <button onClick={() => setStartBooking(true)}>
+                        Booking <i className="fa-light fa-arrow-right"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.welcome}>
+            <div className="container">
+              <div className="heading">
+                <h2>WELCOME TO COURSE</h2>
+                <div className="line" style={{ width: "45%" }}></div>
+              </div>
+              <div
+                className={"d-flex justify-content-end" + " " + styles.detail}
+              >
+                <div className={styles.detail_info}>
+                  <div className={styles.detail_info_wrapper}>
+                    <div
+                      className={
+                        "d-flex justify-content-between" +
+                        " " +
+                        styles.navigation
+                      }
+                    >
+                      <span onClick={() => swiper.slidePrev()}>
+                        <i className="fa-light fa-chevron-left"></i>
+                      </span>
+                      <span onClick={() => swiper.slideNext()}>
+                        <i className="fa-light fa-chevron-right"></i>
+                      </span>
+                    </div>
+                    <Swiper
+                      effect={"flip"}
+                      grabCursor={true}
+                      slidesPerView={1}
+                      spaceBetween={30}
+                      loop={true}
+                      pagination={false}
+                      navigation={false}
+                      modules={[Pagination, Navigation]}
+                      className="mySwiper"
+                      onSwiper={(s) => {
+                        console.log("initialize swiper", s);
+                        setSwiper(s);
                       }}
                     >
-                      <i className="fa-light fa-clock"></i>
-                      <span>{item.label}</span>
+                      <div className={styles.content}>
+                        <SwiperSlide>
+                          <div className="step_slide">
+                            <span>01</span>
+                            <span></span>
+                            <span>WELCOME TO COURSE</span>
+                          </div>
+                          <h3>COURSE</h3>
+                          <p>
+                            Lorem Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum has been the
+                            industrys standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and
+                            scrambled it to make a type specimen book. It has
+                            survived not only five centuries, but also the leap
+                            into electronic typesetting, remaining essentially
+                            unchanged. It was popularised in the 1960s with the
+                            release of Letraset sheets containing Lorem Ipsum
+                            passages, and more recently with desktop publishing
+                            software like Aldus PageMaker including versions of
+                            Lorem Ipsum. There are many variations of passages
+                            of Lorem Ipsum available, but the majority have
+                            suffered alteration in some form, by injected
+                            humour, or randomised words which dont look even
+                            slightly believable. If you are going to use a
+                            passage of Lorem Ipsum, you need to be sure there
+                            isnt anything embarrassing hidden in the middle of
+                            text. All the Lorem Ipsum generators on the Internet
+                            tend to repeat predefined chunks as necessary,
+                            making this the first true generator on the
+                            Internet. It uses a dictionary of over 200 Latin
+                            words, combined with a handful of model sentence
+                            structures, to generate Lorem Ipsum which looks
+                            reasonable. The generated Lorem Ipsum is therefore
+                            always free from repetition, injected humour, or
+                            non-characteristic words etc.
+                          </p>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                          <div className="step_slide">
+                            <span>02</span>
+                            <span></span>
+                            <span>Title 02</span>
+                          </div>
+                          <h3>Coure 02</h3>
+                          <p>
+                            Lorem Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum has been the
+                            industrys standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and
+                            scrambled it to make a type specimen book. It has
+                            survived not only five centuries, but also the leap
+                            into electronic typesetting, remaining essentially
+                            unchanged. It was popularised in the 1960s with the
+                            release of Letraset sheets containing Lorem Ipsum
+                            passages, and more recently with desktop publishing
+                            software like Aldus PageMaker including versions of
+                            Lorem Ipsum. There are many variations of passages
+                            of Lorem Ipsum available, but the majority have
+                            suffered alteration in some form, by injected
+                            humour, or randomised words which dont look even
+                            slightly believable. If you are going to use a
+                            passage of Lorem Ipsum, you need to be sure there
+                            isnt anything embarrassing hidden in the middle of
+                            text. All the Lorem Ipsum generators on the Internet
+                            tend to repeat predefined chunks as necessary,
+                            making this the first true generator on the
+                            Internet. It uses a dictionary of over 200 Latin
+                            words, combined with a handful of model sentence
+                            structures, to generate Lorem Ipsum which looks
+                            reasonable. The generated Lorem Ipsum is therefore
+                            always free from repetition, injected humour, or
+                            non-characteristic words etc.
+                          </p>
+                        </SwiperSlide>
+                      </div>
+                    </Swiper>
+                    <div
+                      className={
+                        "d-flex justify-content-end" + " " + styles.see_more
+                      }
+                    >
+                      <button>See more</button>
                     </div>
-                  ))}
-                </div>
-                <div className="button d-flex justify-content-center">
-                  <button onClick={() => setStep(3)}>CONTINUE</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-      {step === 2 && (
-        <div className="container">
-          <div className={styles.confirm}>
-            <div className="heading">
-              <h2>CONFIRMATION</h2>
-              <div className="line" style={{ width: "60%" }}></div>
-            </div>
-            <div className="col-8 m-auto">
-              <form action="" onSubmit={handleSubmit(onSubmit)}>
-                <input type="text" placeholder="Name" {...register("name")} />
-                {errors?.name && (
-                  <Alert variant="danger">{errors?.name?.message}</Alert>
-                )}
-                <input type="text" placeholder="Phone" {...register("phone")} />
-
-                {errors?.phone && (
-                  <Alert variant="danger">{errors?.phone?.message}</Alert>
-                )}
-                <input type="text" placeholder="Email" {...register("email")} />
-                {errors?.email && (
-                  <Alert variant="danger">{errors?.email?.message}</Alert>
-                )}
-                <div className="button d-flex justify-content-center">
-                  <button>Submit</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
-      {step === 3 && (
-        <div className="container m-auto">
-          <div className={styles.info}>
-            <div className="heading">
-              <h2>INFOMATION BOOKING</h2>
-              <div className="line" style={{ width: "40%" }}></div>
-            </div>
-            <div className={styles.content + " " + "w-100"}>
-              <div className={styles.header}>
-                <h5 className="text-center">YOUR BOOKING HAS BEEN CONFIRMED</h5>
-              </div>
-              <div className={styles.info}>
-                <div className="d-flex align-items-start col-10 m-auto">
-                  <div
-                    className={
-                      "col-3 d-flex flex-column justify-content-start" +
-                      " " +
-                      styles.left
-                    }
-                  >
-                    <h6>Your Sooking:</h6>
-                    <h6>Attendees:</h6>
-                    <h6>When:</h6>
-                    <h6>Timezone:</h6>
-                    <h6>Location:</h6>
-                    <h6>Description:</h6>
-                  </div>
-                  <div
-                    className={
-                      "col-9 d-flex flex-column justify-content-start" +
-                      " " +
-                      styles.right
-                    }
-                  >
-                    <h6>LIO Academy</h6>
-                    <h6>{watch("name")}</h6>
-                    <h6>
-                      {`${convertDate(startDate).w}, ${
-                        ListTime[selectedTime].label
-                      }, ${convertDate(startDate).getDateMonthYear}`}
-                    </h6>
-                    <h6>Vietnam</h6>
-                    <h6>{watch2("address")}</h6>
-                    <h6>
-                      Name: {watch("name")} <br />
-                      Phone: {watch("phone")} <br />
-                      Email: {watch("email")}
-                    </h6>
                   </div>
                 </div>
-                <div className="button d-flex justify-content-center">
-                  <button onClick={() => setStep(step + 1)}>
-                    Confirm Booking
-                  </button>
+                <div className={"col-8" + " " + styles.image}>
+                  <Image
+                    alt="Image Course"
+                    src="/images/Booking/bookinCourse.png"
+                    layout="fill"
+                  ></Image>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      )}
-      {step === 4 && (
-        <div
-          className={
-            "container d-flex justify-content-center" +
-            " " +
-            styles.booking_tool
-          }
-        >
-          <div className={styles.btn_continute}>
-            <button onClick={() => router.push("/academy")}>
-              <i className="fa-light fa-arrow-left"></i> Back to course
-            </button>
-          </div>
-          <div className={styles.btn_check_order}>
-            <button>
-              Check Booking Order <i className="fa-light fa-arrow-right"></i>
-            </button>
-          </div>
-        </div>
+          </div>{" "}
+        </>
+      ) : (
+        <StartBooking setStartBooking={setStartBooking} address={address} />
       )}
     </div>
   );

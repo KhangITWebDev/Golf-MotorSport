@@ -1,60 +1,106 @@
 .booking_page {
-  .content {
-    width: 90%;
-    h1 {
-      font-size: 40px;
-      font-weight: 700;
-    }
-    p {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.8;
-      text-align: justify;
-      margin-top: 24px;
-    }
-    .form {
-      width: 95% !important;
-      margin-bottom: 50px;
-      .input {
-        border-bottom: 2px solid #cecece;
-        margin-top: 60px;
-        input {
-          padding: 6px 0px 6px 30px;
-          border: none;
-          font-size: 16px;
-          font-weight: 400;
-          color: #0b2b20b2;
+  .banner {
+    position: relative;
+    height: 750px;
+    .content {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      display: flex;
+      h2 {
+        font-size: 42px;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+        margin-top: 200px;
+        @media screen and (max-width: 767.98px) {
+          font-size: 36px;
         }
-        button {
-          border: none;
-          background: transparent;
-          padding-right: 30px;
+      }
+      .search {
+        background: rgba(255, 255, 255, 0.31);
+        padding: 25px 35px;
+        border-radius: 4px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 35px;
+        .select_location {
+          border-right: 1px solid #ececec;
+          padding-right: 20px;
+          .title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ececec;
+          }
           i {
-            color: #bc0707;
-            font-size: 20px;
+            font-size: 30px;
+            color: #0b2b20;
+            padding-left: 10px;
+            padding-right: 15px;
+          }
+        }
+        .tool {
+          button {
+            background-color: #0b2b20;
+            padding: 5px 20px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            border: 2px solid #0b2b20;
+            &:hover {
+              color: #0b2b20;
+              background: transparent;
+            }
           }
         }
       }
     }
-    .button {
-      width: 95%;
-      border: 2px solid #0b2b20;
-      background: #0b2b20;
-      color: #fff;
-      text-transform: uppercase;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      font-size: 18px;
-      font-weight: 500;
-      &:hover {
-        color: #0b2b20;
-        background: transparent;
+  }
+  .welcome {
+    margin-bottom: 100px;
+    margin-top: 60px;
+    .detail {
+      position: relative;
+      margin-top: 40px;
+      &_info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        z-index: 1;
+        &_wrapper {
+          width: 55%;
+          background: #ffffff;
+          box-shadow: 0px 4px 11px 10px rgba(0, 0, 0, 0.05);
+          padding: 40px;
+          .navigation {
+            span {
+              font-size: 20px;
+              cursor: pointer;
+            }
+          }
+          .see_more {
+            margin-top: 60px;
+            button {
+              background: transparent;
+              border: none;
+              font-size: 14px;
+              font-weight: 500;
+              color: #0b2b20;
+            }
+          }
+        }
+      }
+      .image {
+        position: relative;
+        height: 900px;
       }
     }
-  }
-  .banner {
-    position: relative;
-    height: 600px;
   }
   .time {
     &_content {
@@ -110,7 +156,6 @@
         background: rgba(217, 217, 217, 0.3);
         border: 0;
         padding: 10px 15px;
-        margin-top: 22px;
         color: #0b2b2099;
       }
     }
@@ -126,6 +171,7 @@
         h5 {
           font-size: 20px;
           font-weight: 600;
+          color: #000;
           line-height: 1;
           margin-bottom: 0px;
         }
@@ -133,25 +179,25 @@
       .info {
         padding-top: 50px;
         padding-bottom: 60px;
-        .left {
+        .information_column {
           h6 {
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 500;
             line-height: 1.8;
+            color: #000000;
+            i {
+              margin-right: 16px;
+            }
             &:not(:first-child) {
               margin-top: 5px;
             }
+          }
+          .desc {
+            font-weight: 400;
           }
         }
-        .right {
-          h6 {
-            font-size: 18px;
-            font-weight: 400;
-            line-height: 1.8;
-            &:not(:first-child) {
-              margin-top: 5px;
-            }
-          }
+        button {
+          font-size: 16px !important;
         }
       }
     }

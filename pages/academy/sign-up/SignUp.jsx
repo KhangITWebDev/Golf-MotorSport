@@ -50,6 +50,7 @@ function SignUp(props) {
   });
   const dispatch = useDispatch();
   const listUser = useSelector((state) => state.DemoReducer.usersList) || [];
+  console.log(listUser);
   useEffect(() => {
     dispatch(getUsersData());
   }, [dispatch]);
@@ -61,6 +62,7 @@ function SignUp(props) {
       : watch("phone")?.indexOf("+84") === 0
       ? watch("phone")?.replace("+84", "0")
       : watch("phone");
+  console.log(findIndexEmail);
   const findIndexPhone = listUser.findIndex((x) => x.phone === formatPhone);
   const onSubmit = (data) => {
     if (findIndexEmail < 0 && findIndexPhone < 0) {
@@ -131,11 +133,21 @@ function SignUp(props) {
         <div className={"col-12 col-md-6" + " " + styles.form}>
           <h5>Form</h5>
           <form action="" onSubmit={handleSubmit(onSubmit)}>
-            <input type="text" placeholder="Name" {...register("name")} />
+            <div className="input-positon">
+              <div className="icon">
+                <i className="fa-light fa-user-alt"></i>
+              </div>
+              <input type="text" placeholder="Name" {...register("name")} />
+            </div>
             {errors?.name && (
               <Alert variant="danger">{errors?.name?.message}</Alert>
             )}
-            <input type="text" placeholder="Phone" {...register("phone")} />
+            <div className="input-positon">
+              <div className="icon">
+                <i className="fa-light fa-mobile"></i>
+              </div>
+              <input type="text" placeholder="Phone" {...register("phone")} />
+            </div>
 
             {errors?.phone && (
               <Alert variant="danger">{errors?.phone?.message}</Alert>
@@ -143,7 +155,12 @@ function SignUp(props) {
             {findIndexPhone >= 0 && (
               <Alert variant="danger">This phone already exists</Alert>
             )}
-            <input type="text" placeholder="Email" {...register("email")} />
+            <div className="input-positon">
+              <div className="icon">
+                <i className="fa-light fa-envelope"></i>
+              </div>
+              <input type="text" placeholder="Email" {...register("email")} />
+            </div>
             {errors?.email && (
               <Alert variant="danger">{errors?.email?.message}</Alert>
             )}
