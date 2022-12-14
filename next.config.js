@@ -4,6 +4,9 @@ module.exports = async (phase, { defaultConfig }) => {
    */
   const nextConfig = {
     reactStrictMode: true,
+    eslint: {
+      ignoreDuringBuilds: true,
+    },
     swcMinify: true,
     images: {
       domains: [
