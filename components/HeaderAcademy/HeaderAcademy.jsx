@@ -70,6 +70,15 @@ function HeaderAcademy(props) {
                 <Dropdown.Toggle
                   variant="default"
                   id="dropdown-cafe"
+                  onClick={() => router.push("/proshop")}
+                >
+                  Proshop
+                </Dropdown.Toggle>
+              </Dropdown>
+              <Dropdown>
+                <Dropdown.Toggle
+                  variant="default"
+                  id="dropdown-cafe"
                   onClick={() => router.push("/golf")}
                 >
                   News
